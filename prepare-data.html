@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prepare the Data | PL-300 Exam Prep by Melarks</title>
+<meta name="description" content="PL-300 Prepare the Data study guide covering storage modes, profiling, Power Query transformations, joins, query folding, parameters and incremental refresh.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://melarks.com/prepare-data.html">
+<meta name="theme-color" content="#03045e">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks">
+<meta property="og:title" content="Prepare the Data | PL-300 Exam Prep by Melarks">
+<meta property="og:description" content="PL-300 Prepare the Data study guide covering storage modes, profiling, Power Query transformations, joins, query folding, parameters and incremental refresh.">
+<meta property="og:url" content="https://melarks.com/prepare-data.html">
+<meta property="og:image" content="https://melarks.com/assets/og-cover.png">
+<meta property="og:image:alt" content="PL-300 Exam Prep by Melarks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prepare the Data | PL-300 Exam Prep by Melarks">
+<meta name="twitter:description" content="PL-300 Prepare the Data study guide covering storage modes, profiling, Power Query transformations, joins, query folding, parameters and incremental refresh.">
+<meta name="twitter:image" content="https://melarks.com/assets/og-cover.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Prepare the Data | PL-300 Exam Prep by Melarks", "description": "PL-300 Prepare the Data study guide covering storage modes, profiling, Power Query transformations, joins, query folding, parameters and incremental refresh.", "url": "https://melarks.com/prepare-data.html", "isPartOf": {"@type": "WebSite", "name": "Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks", "url": "https://melarks.com"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 1 — Prepare the Data", "description": "Choose the right storage/connection approach, shape and validate data efficiently, preserve folding, and understand how parameters and refresh policies affect loading.", "educationalLevel": "Intermediate", "learningResourceType": "Study guide", "about": "Microsoft Power BI Data Analyst PL-300 certification"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://melarks.com/"}, {"@type": "ListItem", "position": 2, "name": "Module 1 — Prepare the Data", "item": "https://melarks.com/prepare-data.html"}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap topbar">
+    <a class="brand" href="index.html" aria-label="Melarks PL-300 Exam Prep home">
+      <span class="brand-mark" aria-hidden="true">PL<br>300</span>
+      <span>PL-300 Prep by Melarks</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation"><a href="index.html">Home</a>
+<a href="prepare-data.html" aria-current="page">Study Guide</a>
+<a href="formula-reference.html">Formula Reference</a>
+<a href="practice.html">Practice</a>
+<a href="mock-exam.html">Mock Exam</a>
+<a href="cheat-sheet.html">Cheat Sheet</a>
+<a href="about.html">About</a></nav>
+    <div style="display:flex;gap:7px">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark and light theme">◐</button>
+      <button class="menu-btn" type="button" data-menu aria-label="Open navigation menu">Menu</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumbs"><a href="index.html">Home</a> / Study Guide / Module 1 — Prepare the Data</div>
+    <span class="eyebrow">25–30% of exam</span>
+    <h1>Module 1 — Prepare the Data</h1>
+    <p>Choose the right storage/connection approach, shape and validate data efficiently, preserve folding, and understand how parameters and refresh policies affect loading.</p>
+    <div class="actions">
+      <a class="btn" href="#module-content">Start module</a>
+      <a class="btn secondary" href="practice.html">Open full practice bank</a>
+    </div>
+  </div>
+</section>
+<section class="section" id="module-content">
+  <div class="wrap layout">
+    <div>
+      <div class="notice" style="margin-bottom:20px">
+        <strong>Your progress is saved on this browser.</strong>
+        <div class="small" data-global-progress>0/160 questions completed</div>
+      </div>
+      <section class="concept" id="storage_connections">
+      <span class="pill">Concept 1</span>
+      <h2>Storage modes & connections</h2>
+      <ul><li><b>Import</b> stores a copy in the semantic model and normally gives the fastest interaction; refresh is required for source changes.</li><li><b>DirectQuery</b> leaves data at the source and report interactions can issue source queries.</li><li><b>DirectLake</b> is a Fabric/OneLake storage mode and is distinct from DirectQuery.</li><li>Know when to connect to a <b>shared semantic model</b> to reuse governed measures and relationships.</li><li>Credentials authenticate to a source; an on-premises gateway provides connectivity. These are separate concerns.</li></ul>
+      
+      <div class="gotcha"><strong>Exam gotcha:</strong> Do not choose DirectQuery merely because a table is large. Freshness, platform, source capability and performance all matter.</div>
+      <div class="inline-quiz" data-topic="storage_connections" data-limit="5"></div>
+    </section><section class="concept" id="profiling_types">
+      <span class="pill">Concept 2</span>
+      <h2>Data profiling, quality, errors & types</h2>
+      <ul><li>Use column quality, distribution and profile statistics to inspect valid/error/empty values, distinctness and distributions.</li><li>Power Query profiling may use the <b>top 1,000 rows</b>; switch to the entire dataset before concluding a key is unique.</li><li><b>Remove Errors</b> drops rows; <b>Replace Errors</b> preserves rows and substitutes a value.</li><li>Use <b>Change Type using Locale</b> for ambiguous dates/numbers.</li><li>IDs and postal codes can be numeric-looking but often belong as text.</li></ul>
+      
+      <div class="gotcha"><strong>Exam gotcha:</strong> Distinct count and unique-value count are different profiling ideas, and a sample of 1,000 rows is not proof of uniqueness for the full table.</div>
+      <div class="inline-quiz" data-topic="profiling_types" data-limit="5"></div>
+    </section><section class="concept" id="transformations_m">
+      <span class="pill">Concept 3</span>
+      <h2>Core transformations & Power Query M</h2>
+      <ul><li>Know Split, Extract, Replace Values, Fill Down/Up, Group By, Transpose, Promote/Demote Headers, Conditional Column, Custom Column and Index.</li><li>In M, <code>each</code> commonly represents a row function.</li><li><b>Pivot</b> turns row values into columns; <b>Unpivot</b> turns columns into attribute/value rows.</li><li><b>Unpivot Other Columns</b> is resilient when new month/year columns may appear.</li><li>Convert nested JSON/XML/list/record structures into a tabular shape before modeling.</li></ul>
+      
+<div class="code-wrap">
+  <div class="code-label">Power Query M</div>
+  <pre class="code-block"><code>Table.AddColumn(
+    Sales,
+    &quot;Revenue&quot;,
+    each [Quantity] * [UnitPrice],
+    type number
+)</code></pre>
+  <ul class="formula-explain"><li>Table.AddColumn returns the input table plus a new column.</li><li>&quot;Revenue&quot; is the new column name.</li><li>each evaluates the row expression for every row.</li><li>type number assigns the result data type.</li></ul>
+</div>
+      <div class="gotcha"><strong>Exam gotcha:</strong> Transpose is not Pivot. Also, an unnecessary Index step can add work and may interrupt query folding.</div>
+      <div class="inline-quiz" data-topic="transformations_m" data-limit="5"></div>
+    </section><section class="concept" id="merge_append">
+      <span class="pill">Concept 4</span>
+      <h2>Merge, append, joins & folder combinations</h2>
+      <ul><li><b>Append</b> stacks rows; <b>Merge</b> joins columns by matching keys.</li><li>Left Anti returns rows from the left table with no match; Right Anti does the reverse; Full Outer keeps all rows from both sides.</li><li>Join columns should use compatible data types and equivalent business keys.</li><li>For recurring same-schema files, use a <b>Folder connector + Combine Files</b> rather than manually importing each file.</li><li>Merge is a Power Query transformation; model relationships serve a different purpose after load.</li></ul>
+      
+      <div class="gotcha"><strong>Exam gotcha:</strong> Append and Merge are frequent distractors. Ask whether the requirement is 'more rows' or 'more columns by key.'</div>
+      <div class="inline-quiz" data-topic="merge_append" data-limit="5"></div>
+    </section><section class="concept" id="query_folding">
+      <span class="pill">Concept 5</span>
+      <h2>Query folding & efficient shaping</h2>
+      <ul><li>Query folding pushes supported Power Query operations back to the source.</li><li>Filter rows and remove unnecessary columns early when logically possible and foldable.</li><li>A non-foldable step can prevent later steps from folding.</li><li>Use native/folding indicators or View Native Query where supported.</li><li>Folding is valuable for Import refresh too; it is not only a DirectQuery concept.</li></ul>
+      
+<div class="code-wrap">
+  <div class="code-label">Power Query M</div>
+  <pre class="code-block"><code>let
+    Source = Sql.Database(&quot;SERVER&quot;, &quot;SalesDB&quot;),
+    Sales = Source{[Schema=&quot;dbo&quot;, Item=&quot;Sales&quot;]}[Data],
+    Filtered = Table.SelectRows(Sales, each [OrderDate] &gt;= #date(2026,1,1)),
+    Selected = Table.SelectColumns(Filtered,{&quot;OrderDate&quot;,&quot;ProductKey&quot;,&quot;Amount&quot;})
+in
+    Selected</code></pre>
+  <ul class="formula-explain"><li>Source connects to SQL Server.</li><li>Filtered restricts rows before later transformations.</li><li>Selected keeps only required columns.</li><li>When supported, these operations can fold to SQL.</li></ul>
+</div>
+      <div class="gotcha"><strong>Exam gotcha:</strong> Do not assume Power Query automatically optimizes every step sequence or that Import mode makes folding irrelevant.</div>
+      <div class="inline-quiz" data-topic="query_folding" data-limit="5"></div>
+    </section><section class="concept" id="refresh_parameters">
+      <span class="pill">Concept 6</span>
+      <h2>Parameters, incremental refresh & load settings</h2>
+      <ul><li>Power Query parameters can make server names, paths, dates and transformation inputs reusable.</li><li>For incremental refresh, create Date/Time <code>RangeStart</code> and <code>RangeEnd</code> parameters and filter with <code>&gt;= RangeStart</code> and <code>&lt; RangeEnd</code>.</li><li>The store/archive period is larger history retained; the refresh period is the recent subset refreshed.</li><li>Detect data changes can use a modification timestamp such as LastModifiedDate.</li><li>Turn <b>Enable load</b> off for staging queries that should not become model tables; Include in report refresh is a separate setting.</li></ul>
+      
+<div class="code-wrap">
+  <div class="code-label">Power Query M</div>
+  <pre class="code-block"><code>Table.SelectRows(
+    Source,
+    each [TransactionDate] &gt;= RangeStart
+        and [TransactionDate] &lt; RangeEnd
+)</code></pre>
+  <ul class="formula-explain"><li>RangeStart and RangeEnd are Date/Time parameters.</li><li>&gt;= on the start and &lt; on the end create adjacent non-overlapping boundaries.</li><li>The filter should fold when the source supports it.</li></ul>
+</div>
+      <div class="gotcha"><strong>Exam gotcha:</strong> The business transaction date normally defines partitions, while a modification date can tell Power BI whether data changed.</div>
+      <div class="inline-quiz" data-topic="refresh_parameters" data-limit="5"></div>
+    </section>
+      <nav class="module-nav" aria-label="Module navigation"><span></span><a class="btn" href="data-modeling.html">Module 2 — Data Modeling →</a></nav>
+    </div>
+    <aside class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <a href="#storage_connections">Storage modes &amp; connections</a><a href="#profiling_types">Data profiling, quality, errors &amp; types</a><a href="#transformations_m">Core transformations &amp; Power Query M</a><a href="#merge_append">Merge, append, joins &amp; folder combinations</a><a href="#query_folding">Query folding &amp; efficient shaping</a><a href="#refresh_parameters">Parameters, incremental refresh &amp; load settings</a>
+      <hr style="border:0;border-top:1px solid var(--border);margin:12px 0">
+      <a href="formula-reference.html">Formula reference</a>
+      <a href="cheat-sheet.html">Pre-exam cheat sheet</a>
+    </aside>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong>PL-300 Exam Prep by Melarks</strong>
+      <p>Independent study support for experienced Power BI analysts preparing for Microsoft PL-300.</p>
+      <p class="small">This site is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft, Power BI, and PL-300 are trademarks of their respective owner.</p>
+    </div>
+    <div>
+      <strong>Study</strong>
+      <p><a href="prepare-data.html">Prepare Data</a><br>
+      <a href="data-modeling.html">Data Modeling</a><br>
+      <a href="dax-filter-context.html">DAX &amp; Filter Context</a><br>
+      <a href="visualize-analyze.html">Visualize &amp; Analyze</a><br>
+      <a href="service-security.html">Service &amp; Security</a></p>
+    </div>
+    <div>
+      <strong>Resources</strong>
+      <p><a href="practice.html">Practice Questions</a><br>
+      <a href="mock-exam.html">Mock Exam</a><br>
+      <a href="formula-reference.html">Formula Reference</a><br>
+      <a href="cheat-sheet.html">Cheat Sheet</a><br>
+      <a href="exam-strategy.html">Exam Strategy</a><br>
+      <a href="about.html">About</a></p>
+    </div>
+  </div>
+  <div class="wrap small" style="margin-top:20px">
+    © <span data-year>2026</span> Melarks. Educational use only. 
+    <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-300" rel="noopener">Official Microsoft PL-300 study guide</a>.
+  </div>
+</footer>
+<script src="js/app.js" defer></script>
+<script src="js/questions.js" defer></script>
+<script src="js/practice.js" defer></script>
+</body>
+</html>

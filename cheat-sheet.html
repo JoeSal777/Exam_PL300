@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PL-300 Exam Cheat Sheet — Last-Minute Review | Melarks</title>
+<meta name="description" content="Printable PL-300 cheat sheet covering Power Query, modeling, DAX, visuals, Power BI Service, security and high-value exam gotchas.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://melarks.com/cheat-sheet.html">
+<meta name="theme-color" content="#03045e">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks">
+<meta property="og:title" content="PL-300 Exam Cheat Sheet — Last-Minute Review | Melarks">
+<meta property="og:description" content="Printable PL-300 cheat sheet covering Power Query, modeling, DAX, visuals, Power BI Service, security and high-value exam gotchas.">
+<meta property="og:url" content="https://melarks.com/cheat-sheet.html">
+<meta property="og:image" content="https://melarks.com/assets/og-cover.png">
+<meta property="og:image:alt" content="PL-300 Exam Prep by Melarks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PL-300 Exam Cheat Sheet — Last-Minute Review | Melarks">
+<meta name="twitter:description" content="Printable PL-300 cheat sheet covering Power Query, modeling, DAX, visuals, Power BI Service, security and high-value exam gotchas.">
+<meta name="twitter:image" content="https://melarks.com/assets/og-cover.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "PL-300 Exam Cheat Sheet — Last-Minute Review | Melarks", "description": "Printable PL-300 cheat sheet covering Power Query, modeling, DAX, visuals, Power BI Service, security and high-value exam gotchas.", "url": "https://melarks.com/cheat-sheet.html", "isPartOf": {"@type": "WebSite", "name": "Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks", "url": "https://melarks.com"}}</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap topbar">
+    <a class="brand" href="index.html" aria-label="Melarks PL-300 Exam Prep home">
+      <span class="brand-mark" aria-hidden="true">PL<br>300</span>
+      <span>PL-300 Prep by Melarks</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation"><a href="index.html">Home</a>
+<a href="prepare-data.html">Study Guide</a>
+<a href="formula-reference.html">Formula Reference</a>
+<a href="practice.html">Practice</a>
+<a href="mock-exam.html">Mock Exam</a>
+<a href="cheat-sheet.html" aria-current="page">Cheat Sheet</a>
+<a href="about.html">About</a></nav>
+    <div style="display:flex;gap:7px">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark and light theme">◐</button>
+      <button class="menu-btn" type="button" data-menu aria-label="Open navigation menu">Menu</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero"><div class="wrap">
+  <div class="breadcrumbs"><a href="index.html">Home</a> / Cheat Sheet</div>
+  <span class="eyebrow">Last-minute review</span>
+  <h1>PL-300 Exam Cheat Sheet</h1>
+  <p>A compact scan of the distinctions, formulas and Service features worth having fresh in your mind before the exam.</p>
+  <div class="actions no-print">
+    <button class="btn" type="button" data-print>Print / Save as PDF</button>
+    <a class="btn secondary" href="assets/pl300-cheat-sheet.txt" download>Download text version</a>
+  </div>
+</div></section>
+<section class="section"><div class="wrap">
+  <div class="notice"><strong>Use this for review, not first-time learning.</strong> If a bullet feels unfamiliar, return to the relevant study module and answer its exam checks.</div>
+  <section class="concept"><h2>Prepare the Data</h2><ul><li>Import = in-memory copy; DirectQuery = source queried at interaction time; DirectLake = Fabric/OneLake storage mode.</li><li>Profile beyond the top 1,000 rows when uniqueness/quality conclusions matter.</li><li>Correct data type first; use locale-aware conversion for ambiguous dates/numbers.</li><li>Append adds rows. Merge joins columns by key. Left Anti returns unmatched left rows.</li><li>Reference inherits upstream query changes; Duplicate is an independent copy of steps.</li><li>Unpivot turns columns into attribute/value rows; Unpivot Other Columns is resilient to new period columns.</li><li>Remove unused rows/columns early and preserve query folding where possible.</li><li>Incremental refresh: Date/Time RangeStart + RangeEnd, commonly &gt;= RangeStart and &lt; RangeEnd.</li><li>Enable Load controls whether a query becomes a model table; refresh participation is a separate setting.</li><li>Privacy levels govern source isolation during combination; they are not RLS.</li></ul></section><section class="concept"><h2>Data Modeling</h2><ul><li>Prefer a star schema: dimensions on the 1 side, fact table on the many side.</li><li>Define grain first: what exactly does one fact-table row represent?</li><li>Single-direction dimension → fact is the default best practice; bidirectional is a deliberate exception.</li><li>Many-to-many business relationships often need a bridge table.</li><li>Inactive relationships can be activated inside CALCULATE with USERELATIONSHIP.</li><li>Use role-playing date dimensions when independent Order Date and Ship Date slicers are required.</li><li>Date table: unique, non-null, contiguous date column; mark it as Date Table where appropriate.</li><li>Month Name sorts by Month Number; Month-Year needs a sequential YearMonth key.</li><li>Measures are dynamic filter-context calculations; calculated columns are stored row-level values.</li><li>High-cardinality unused text/IDs are common model-size targets. Hiding a column does not reduce model size.</li></ul></section><section class="concept"><h2>DAX &amp; Filter Context</h2><ul><li>Measures already respond to filter context. CALCULATE is for changing context, not merely &#x27;making filters work&#x27;.</li><li>Row context = current row; filter context = visible subset from visuals, slicers, filters and relationships.</li><li>CALCULATE modifies filter context and performs context transition when row context exists.</li><li>REMOVEFILTERS(Column) removes only that column&#x27;s filter; unrelated filters remain.</li><li>KEEPFILTERS intersects a new same-column filter with the existing filter.</li><li>SUMX/AVERAGEX iterate a table; SUM/AVERAGE aggregate existing columns.</li><li>VALUES(Column) returns distinct visible values; useful for entity-grain averages.</li><li>DIVIDE is safer than / when denominator can be zero or blank.</li><li>SAMEPERIODLASTYEAR shifts the current date set one year; DATEADD shifts by a chosen interval.</li><li>Variables store results in the context where they are evaluated; they do not magically recalculate after a later context change.</li><li>Balances are often semi-additive: aggregate across entities, but use a closing/last-data-date logic across time.</li><li>Calculation groups reuse transformations across measures; SELECTEDMEASURE identifies the current measure.</li><li>DAX Query View uses queries such as EVALUATE to inspect model results.</li></ul></section><section class="concept"><h2>Visualize &amp; Analyze</h2><ul><li>Line = trend; bar/column = category comparison; scatter = numeric relationship; matrix = hierarchy/crosstab.</li><li>Gauge = value vs target/range. KPI = status/trend with target over time.</li><li>Filter restricts a target visual; Highlight keeps broader context and emphasizes a subset.</li><li>Drill down stays within a hierarchy; Drillthrough navigates to a detail page with context.</li><li>Report page tooltip shows rich hover content without navigation.</li><li>Bookmarks can capture Data, Display and Current page; avoid Data when a bookmark should only show/hide visuals.</li><li>Top N requires a value measure; sorting descending alone does not limit rows.</li><li>Field parameter switches fields/measures; What-if parameter provides numeric scenario input.</li><li>Key influencers ranks factors associated with an outcome; decomposition tree breaks a measure across dimensions.</li><li>Q&amp;A = user asks natural language. Smart narrative = Power BI generates text.</li><li>Analytics features can include reference lines, forecasting, anomaly/outlier detection, clustering and error bars.</li><li>Paginated reports are RDL, authored in Power BI Report Builder, and optimized for pixel-perfect/print/multi-page output.</li><li>Visual calculations operate on a visual&#x27;s result structure and are not reusable semantic-model measures.</li><li>Accessibility: alt text, tab order, contrast, labels/icons—never rely on color alone.</li></ul></section><section class="concept"><h2>Power BI Service, Security &amp; Governance</h2><ul><li>Workspace = collaboration/authoring. App = curated distribution to consumers.</li><li>Viewer is the typical workspace role when RLS must constrain a user; elevated editors are not constrained the same way.</li><li>Build permission allows creating reports/Analyze in Excel from a semantic model; Reshare allows passing access onward.</li><li>Dynamic RLS commonly uses a user-access mapping table + USERPRINCIPALNAME().</li><li>Multiple RLS roles are additive (union/OR), not restrictive AND.</li><li>OLS protects model objects such as tables/columns; hiding fields is not security.</li><li>Dashboard = single-page Service canvas. Tiles are pinned/supported dashboard items and can link back to source reports.</li><li>App audiences control which content is visible; RLS controls which data rows are visible.</li><li>Gateway provides Service-to-on-prem connectivity; source credentials are separate.</li><li>Scheduled refresh updates imported data; automatic page refresh periodically re-queries supported DirectQuery pages.</li><li>Subscriptions deliver content on a schedule/condition. Data alerts are threshold-based notifications in supported dashboard scenarios.</li><li>Usage metrics = adoption. Performance Analyzer = slow visual/DAX diagnosis.</li><li>Lineage/impact analysis = downstream dependencies. Query Dependencies = Power Query query/source dependencies.</li><li>Promoted = recommended. Certified = formally reviewed/authoritative.</li><li>Sensitivity labels classify/protect content; they do not replace RLS.</li><li>Publishing deploys report/model design changes; refresh only updates data in an existing model.</li><li>Deployment pipelines support Dev → Test → Prod lifecycle.</li></ul></section><section class="concept"><h2>High-Value Exam Gotchas</h2><ul><li>Hide ≠ remove; hide ≠ security.</li><li>Append = rows; Merge = columns.</li><li>Refresh ≠ publish.</li><li>Gateway online ≠ source credentials valid.</li><li>Usage metrics ≠ Performance Analyzer.</li><li>Query Dependencies ≠ Lineage view.</li><li>Dashboard ≠ report.</li><li>App audience ≠ RLS.</li><li>Workspace role ≠ semantic-model Build permission.</li><li>Q&amp;A ≠ Smart narrative.</li><li>Sort descending ≠ Top N.</li><li>Drill down ≠ Drillthrough.</li><li>Calculated column ≠ measure.</li><li>Power Query parameter ≠ What-if parameter ≠ Field parameter.</li><li>Paginated report ≠ ordinary interactive PBIX report.</li><li>Raw mock percentage ≠ Microsoft&#x27;s scaled certification score.</li></ul></section>
+</div></section>
+</main>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong>PL-300 Exam Prep by Melarks</strong>
+      <p>Independent study support for experienced Power BI analysts preparing for Microsoft PL-300.</p>
+      <p class="small">This site is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft, Power BI, and PL-300 are trademarks of their respective owner.</p>
+    </div>
+    <div>
+      <strong>Study</strong>
+      <p><a href="prepare-data.html">Prepare Data</a><br>
+      <a href="data-modeling.html">Data Modeling</a><br>
+      <a href="dax-filter-context.html">DAX &amp; Filter Context</a><br>
+      <a href="visualize-analyze.html">Visualize &amp; Analyze</a><br>
+      <a href="service-security.html">Service &amp; Security</a></p>
+    </div>
+    <div>
+      <strong>Resources</strong>
+      <p><a href="practice.html">Practice Questions</a><br>
+      <a href="mock-exam.html">Mock Exam</a><br>
+      <a href="formula-reference.html">Formula Reference</a><br>
+      <a href="cheat-sheet.html">Cheat Sheet</a><br>
+      <a href="exam-strategy.html">Exam Strategy</a><br>
+      <a href="about.html">About</a></p>
+    </div>
+  </div>
+  <div class="wrap small" style="margin-top:20px">
+    © <span data-year>2026</span> Melarks. Educational use only. 
+    <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-300" rel="noopener">Official Microsoft PL-300 study guide</a>.
+  </div>
+</footer>
+<script src="js/app.js" defer></script>
+</body>
+</html>

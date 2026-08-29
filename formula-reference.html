@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PL-300 DAX &amp; Power Query M Formula Reference | Melarks</title>
+<meta name="description" content="Searchable PL-300 DAX and Power Query M formula reference with exam-focused explanations and common patterns.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://melarks.com/formula-reference.html">
+<meta name="theme-color" content="#03045e">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks">
+<meta property="og:title" content="PL-300 DAX &amp; Power Query M Formula Reference | Melarks">
+<meta property="og:description" content="Searchable PL-300 DAX and Power Query M formula reference with exam-focused explanations and common patterns.">
+<meta property="og:url" content="https://melarks.com/formula-reference.html">
+<meta property="og:image" content="https://melarks.com/assets/og-cover.png">
+<meta property="og:image:alt" content="PL-300 Exam Prep by Melarks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PL-300 DAX &amp; Power Query M Formula Reference | Melarks">
+<meta name="twitter:description" content="Searchable PL-300 DAX and Power Query M formula reference with exam-focused explanations and common patterns.">
+<meta name="twitter:image" content="https://melarks.com/assets/og-cover.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "PL-300 DAX & Power Query M Formula Reference | Melarks", "description": "Searchable PL-300 DAX and Power Query M formula reference with exam-focused explanations and common patterns.", "url": "https://melarks.com/formula-reference.html", "isPartOf": {"@type": "WebSite", "name": "Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks", "url": "https://melarks.com"}}</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap topbar">
+    <a class="brand" href="index.html" aria-label="Melarks PL-300 Exam Prep home">
+      <span class="brand-mark" aria-hidden="true">PL<br>300</span>
+      <span>PL-300 Prep by Melarks</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation"><a href="index.html">Home</a>
+<a href="prepare-data.html">Study Guide</a>
+<a href="formula-reference.html" aria-current="page">Formula Reference</a>
+<a href="practice.html">Practice</a>
+<a href="mock-exam.html">Mock Exam</a>
+<a href="cheat-sheet.html">Cheat Sheet</a>
+<a href="about.html">About</a></nav>
+    <div style="display:flex;gap:7px">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark and light theme">◐</button>
+      <button class="menu-btn" type="button" data-menu aria-label="Open navigation menu">Menu</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero"><div class="wrap">
+  <div class="breadcrumbs"><a href="index.html">Home</a> / Formula Reference</div>
+  <span class="eyebrow">Searchable quick reference</span>
+  <h1>DAX &amp; Power Query M Formula Reference</h1>
+  <p>Recognize what each pattern does, what context it changes, and the exam clue that usually points to it.</p>
+</div></section>
+<section class="section"><div class="wrap">
+  <label for="formula-search"><strong>Search formulas and concepts</strong></label>
+  <input id="formula-search" class="searchbox" data-formula-search type="search" placeholder="Try CALCULATE, filter, join, RangeStart, RLS…">
+  <div class="formula-grid"><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>SUM</h2>
+      <p class="muted">Sum an existing numeric column.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Total Sales =
+SUM ( Sales[SalesAmount] )</code></pre>
+  <ul class="formula-explain"><li>SUM aggregates a single existing numeric column.</li><li>Use an iterator such as SUMX when an expression must be evaluated row by row.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>CALCULATE</h2>
+      <p class="muted">Evaluate an expression after modifying filter context.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Blue Sales =
+CALCULATE (
+    [Total Sales],
+    Product[Color] = &quot;Blue&quot;
+)</code></pre>
+  <ul class="formula-explain"><li>The first argument is the expression/measure to evaluate.</li><li>Later arguments modify filter context.</li><li>CALCULATE also performs context transition when row context exists.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>REMOVEFILTERS</h2>
+      <p class="muted">Remove selected filters without clearing unrelated context.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Category % =
+DIVIDE (
+    [Total Sales],
+    CALCULATE ( [Total Sales], REMOVEFILTERS ( Product[Category] ) )
+)</code></pre>
+  <ul class="formula-explain"><li>The numerator stays in the current category.</li><li>Only Category is removed from the denominator.</li><li>Date, Region, Customer and other unrelated filters can remain.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>KEEPFILTERS</h2>
+      <p class="muted">Intersect a CALCULATE filter with an existing same-column filter.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Red Sales (keep) =
+CALCULATE (
+    [Total Sales],
+    KEEPFILTERS ( Product[Color] = &quot;Red&quot; )
+)</code></pre>
+  <ul class="formula-explain"><li>Without KEEPFILTERS, a same-column CALCULATE filter normally replaces the existing one.</li><li>KEEPFILTERS asks DAX to intersect instead.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>ALLEXCEPT</h2>
+      <p class="muted">Remove filters from a table except selected columns.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Sales by Year Only =
+CALCULATE (
+    [Total Sales],
+    ALLEXCEPT ( &#x27;Date&#x27;, &#x27;Date&#x27;[Year] )
+)</code></pre>
+  <ul class="formula-explain"><li>Filters on other Date-table columns are removed.</li><li>The Year filter is retained.</li><li>Filters from unrelated tables are not automatically removed.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>SUMX</h2>
+      <p class="muted">Iterate a table and sum an expression.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Revenue =
+SUMX (
+    Sales,
+    Sales[Quantity] * Sales[UnitPrice]
+)</code></pre>
+  <ul class="formula-explain"><li>SUMX creates row context over Sales.</li><li>The expression is calculated for each row and then summed.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>AVERAGEX + VALUES</h2>
+      <p class="muted">Average aggregated results at a chosen entity grain.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Average Customer Sales =
+AVERAGEX (
+    VALUES ( Customer[CustomerID] ),
+    [Total Sales]
+)</code></pre>
+  <ul class="formula-explain"><li>VALUES returns distinct customers in current filter context.</li><li>AVERAGEX evaluates [Total Sales] for each customer and averages those totals.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>FILTER</h2>
+      <p class="muted">Return a filtered table expression.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>High Value Sales =
+CALCULATE (
+    [Total Sales],
+    FILTER ( Sales, Sales[SalesAmount] &gt; 1000 )
+)</code></pre>
+  <ul class="formula-explain"><li>FILTER evaluates its condition row by row and returns a table.</li><li>Use simple Boolean CALCULATE filters when they can express the requirement more directly.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>DIVIDE</h2>
+      <p class="muted">Perform safe division.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Margin % =
+DIVIDE ( [Profit], [Revenue] )</code></pre>
+  <ul class="formula-explain"><li>DIVIDE safely handles zero/blank denominators.</li><li>An optional third argument can define the alternate result.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>USERELATIONSHIP</h2>
+      <p class="muted">Activate an existing inactive relationship for one calculation.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Shipped Sales =
+CALCULATE (
+    [Total Sales],
+    USERELATIONSHIP ( &#x27;Date&#x27;[Date], Sales[ShipDate] )
+)</code></pre>
+  <ul class="formula-explain"><li>The inactive relationship is used for this calculation.</li><li>The model&#x27;s active relationship is not permanently changed.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>SAMEPERIODLASTYEAR</h2>
+      <p class="muted">Shift the visible date set to the corresponding prior-year period.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Prior Year Sales =
+CALCULATE (
+    [Total Sales],
+    SAMEPERIODLASTYEAR ( &#x27;Date&#x27;[Date] )
+)</code></pre>
+  <ul class="formula-explain"><li>Returns a prior-year date set.</li><li>Requires a sound date model for reliable time-intelligence behavior.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>DATEADD</h2>
+      <p class="muted">Shift the current date context by a chosen interval.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Previous Month Sales =
+CALCULATE (
+    [Total Sales],
+    DATEADD ( &#x27;Date&#x27;[Date], -1, MONTH )
+)</code></pre>
+  <ul class="formula-explain"><li>-1 shifts backward one interval.</li><li>MONTH can be replaced with other supported intervals as needed.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>TOTALYTD</h2>
+      <p class="muted">Evaluate a measure over the year-to-date date set.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>YTD Sales =
+TOTALYTD ( [Total Sales], &#x27;Date&#x27;[Date] )</code></pre>
+  <ul class="formula-explain"><li>Uses the Date column to build a year-to-date window.</li><li>Other dimension filters such as Product or Region remain unless removed.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>SELECTEDMEASURE</h2>
+      <p class="muted">Create reusable calculation-group transformations.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>// Calculation item
+CALCULATE (
+    SELECTEDMEASURE(),
+    DATESYTD ( &#x27;Date&#x27;[Date] )
+)</code></pre>
+  <ul class="formula-explain"><li>SELECTEDMEASURE refers to the measure currently being transformed by a calculation group.</li><li>DATESYTD applies the YTD date set.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>DAX query: EVALUATE</h2>
+      <p class="muted">Inspect model results with DAX Query View.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>EVALUATE
+SUMMARIZECOLUMNS (
+    Product[Category],
+    &quot;Sales&quot;, [Total Sales]
+)</code></pre>
+  <ul class="formula-explain"><li>EVALUATE returns a table expression in a DAX query.</li><li>SUMMARIZECOLUMNS groups results and can include measures.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">DAX</span>
+      <h2>USERPRINCIPALNAME</h2>
+      <p class="muted">Build a common dynamic RLS rule.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>UserAccess[UPN] = USERPRINCIPALNAME()</code></pre>
+  <ul class="formula-explain"><li>Returns the signed-in user&#x27;s principal name in the Power BI Service.</li><li>Use a mapping/security table and relationships so the allowed rows propagate correctly.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">Power Query M</span>
+      <h2>Table.SelectRows</h2>
+      <p class="muted">Filter rows.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">Power Query M</div>
+  <pre class="code-block"><code>Table.SelectRows(
+    Source,
+    each [Status] = &quot;Active&quot;
+)</code></pre>
+  <ul class="formula-explain"><li>Source is the input table.</li><li>each evaluates the predicate for each row.</li><li>Supported source operations may fold back to the data source.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">Power Query M</span>
+      <h2>Table.SelectColumns</h2>
+      <p class="muted">Keep only required columns.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">Power Query M</div>
+  <pre class="code-block"><code>Table.SelectColumns(
+    Source,
+    {&quot;OrderDate&quot;, &quot;ProductKey&quot;, &quot;Amount&quot;}
+)</code></pre>
+  <ul class="formula-explain"><li>The second argument is a list of column names to retain.</li><li>Removing unused columns early can improve refresh and model efficiency.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">Power Query M</span>
+      <h2>Table.AddColumn</h2>
+      <p class="muted">Add a calculated transformation column.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">Power Query M</div>
+  <pre class="code-block"><code>Table.AddColumn(
+    Sales,
+    &quot;Revenue&quot;,
+    each [Quantity] * [UnitPrice],
+    type number
+)</code></pre>
+  <ul class="formula-explain"><li>The new column is evaluated per row.</li><li>The final argument explicitly sets the result type.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">Power Query M</span>
+      <h2>Table.Group</h2>
+      <p class="muted">Aggregate and change table grain.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">Power Query M</div>
+  <pre class="code-block"><code>Table.Group(
+    Sales,
+    {&quot;Region&quot;},
+    {{&quot;Sales&quot;, each List.Sum([Amount]), type number}}
+)</code></pre>
+  <ul class="formula-explain"><li>Rows are grouped by Region.</li><li>The aggregation creates one result per group.</li><li>Grouping changes the table&#x27;s stored grain.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">Power Query M</span>
+      <h2>Table.NestedJoin</h2>
+      <p class="muted">Merge tables by key.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">Power Query M</div>
+  <pre class="code-block"><code>Table.NestedJoin(
+    Sales, {&quot;CustomerID&quot;},
+    Customer, {&quot;CustomerID&quot;},
+    &quot;Customer&quot;, JoinKind.LeftOuter
+)</code></pre>
+  <ul class="formula-explain"><li>The key columns should have compatible data types.</li><li>LeftOuter retains all rows from the left table plus matches.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">Power Query M</span>
+      <h2>Table.Combine</h2>
+      <p class="muted">Append compatible tables.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">Power Query M</div>
+  <pre class="code-block"><code>Table.Combine ( {January, February, March} )</code></pre>
+  <ul class="formula-explain"><li>Combines rows from the listed tables.</li><li>Append is a vertical operation; merge is a key-based horizontal operation.</li></ul>
+</div>
+    </article><article class="formula-card" data-formula-card>
+      <span class="pill">Power Query M</span>
+      <h2>Incremental refresh boundary</h2>
+      <p class="muted">Filter using RangeStart and RangeEnd.</p>
+      
+<div class="code-wrap">
+  <div class="code-label">Power Query M</div>
+  <pre class="code-block"><code>Table.SelectRows(
+    Source,
+    each [TransactionDate] &gt;= RangeStart
+        and [TransactionDate] &lt; RangeEnd
+)</code></pre>
+  <ul class="formula-explain"><li>RangeStart and RangeEnd are Date/Time parameters.</li><li>Using &gt;= start and &lt; end creates adjacent, non-overlapping boundaries.</li><li>Preserve query folding where supported.</li></ul>
+</div>
+    </article></div>
+  <div class="notice" style="margin-top:22px"><strong>Exam rule:</strong> don't memorize syntax without context. First identify the grain, current filters, required output and whether the transformation belongs in Power Query, the semantic model or a report visual.</div>
+</div></section>
+</main>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong>PL-300 Exam Prep by Melarks</strong>
+      <p>Independent study support for experienced Power BI analysts preparing for Microsoft PL-300.</p>
+      <p class="small">This site is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft, Power BI, and PL-300 are trademarks of their respective owner.</p>
+    </div>
+    <div>
+      <strong>Study</strong>
+      <p><a href="prepare-data.html">Prepare Data</a><br>
+      <a href="data-modeling.html">Data Modeling</a><br>
+      <a href="dax-filter-context.html">DAX &amp; Filter Context</a><br>
+      <a href="visualize-analyze.html">Visualize &amp; Analyze</a><br>
+      <a href="service-security.html">Service &amp; Security</a></p>
+    </div>
+    <div>
+      <strong>Resources</strong>
+      <p><a href="practice.html">Practice Questions</a><br>
+      <a href="mock-exam.html">Mock Exam</a><br>
+      <a href="formula-reference.html">Formula Reference</a><br>
+      <a href="cheat-sheet.html">Cheat Sheet</a><br>
+      <a href="exam-strategy.html">Exam Strategy</a><br>
+      <a href="about.html">About</a></p>
+    </div>
+  </div>
+  <div class="wrap small" style="margin-top:20px">
+    © <span data-year>2026</span> Melarks. Educational use only. 
+    <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-300" rel="noopener">Official Microsoft PL-300 study guide</a>.
+  </div>
+</footer>
+<script src="js/app.js" defer></script>
+</body>
+</html>

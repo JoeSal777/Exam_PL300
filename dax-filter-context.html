@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DAX &amp; Filter Context | PL-300 Exam Prep by Melarks</title>
+<meta name="description" content="PL-300 DAX study guide covering filter and row context, CALCULATE, filter modifiers, iterators, variables, time intelligence and calculation groups.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://melarks.com/dax-filter-context.html">
+<meta name="theme-color" content="#03045e">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks">
+<meta property="og:title" content="DAX &amp; Filter Context | PL-300 Exam Prep by Melarks">
+<meta property="og:description" content="PL-300 DAX study guide covering filter and row context, CALCULATE, filter modifiers, iterators, variables, time intelligence and calculation groups.">
+<meta property="og:url" content="https://melarks.com/dax-filter-context.html">
+<meta property="og:image" content="https://melarks.com/assets/og-cover.png">
+<meta property="og:image:alt" content="PL-300 Exam Prep by Melarks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DAX &amp; Filter Context | PL-300 Exam Prep by Melarks">
+<meta name="twitter:description" content="PL-300 DAX study guide covering filter and row context, CALCULATE, filter modifiers, iterators, variables, time intelligence and calculation groups.">
+<meta name="twitter:image" content="https://melarks.com/assets/og-cover.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "DAX & Filter Context | PL-300 Exam Prep by Melarks", "description": "PL-300 DAX study guide covering filter and row context, CALCULATE, filter modifiers, iterators, variables, time intelligence and calculation groups.", "url": "https://melarks.com/dax-filter-context.html", "isPartOf": {"@type": "WebSite", "name": "Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks", "url": "https://melarks.com"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 3 — DAX & Filter Context", "description": "Reason about evaluation context first. The exam typically rewards understanding what filters exist and how a DAX expression changes them.", "educationalLevel": "Intermediate", "learningResourceType": "Study guide", "about": "Microsoft Power BI Data Analyst PL-300 certification"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://melarks.com/"}, {"@type": "ListItem", "position": 2, "name": "Module 3 — DAX & Filter Context", "item": "https://melarks.com/dax-filter-context.html"}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap topbar">
+    <a class="brand" href="index.html" aria-label="Melarks PL-300 Exam Prep home">
+      <span class="brand-mark" aria-hidden="true">PL<br>300</span>
+      <span>PL-300 Prep by Melarks</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation"><a href="index.html">Home</a>
+<a href="prepare-data.html">Study Guide</a>
+<a href="formula-reference.html">Formula Reference</a>
+<a href="practice.html">Practice</a>
+<a href="mock-exam.html">Mock Exam</a>
+<a href="cheat-sheet.html">Cheat Sheet</a>
+<a href="about.html">About</a></nav>
+    <div style="display:flex;gap:7px">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark and light theme">◐</button>
+      <button class="menu-btn" type="button" data-menu aria-label="Open navigation menu">Menu</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumbs"><a href="index.html">Home</a> / Study Guide / Module 3 — DAX &amp; Filter Context</div>
+    <span class="eyebrow">Core modeling skill</span>
+    <h1>Module 3 — DAX &amp; Filter Context</h1>
+    <p>Reason about evaluation context first. The exam typically rewards understanding what filters exist and how a DAX expression changes them.</p>
+    <div class="actions">
+      <a class="btn" href="#module-content">Start module</a>
+      <a class="btn secondary" href="practice.html">Open full practice bank</a>
+    </div>
+  </div>
+</section>
+<section class="section" id="module-content">
+  <div class="wrap layout">
+    <div>
+      <div class="notice" style="margin-bottom:20px">
+        <strong>Your progress is saved on this browser.</strong>
+        <div class="small" data-global-progress>0/160 questions completed</div>
+      </div>
+      <section class="concept" id="context_calculate">
+      <span class="pill">Concept 1</span>
+      <h2>Filter context, row context, CALCULATE & context transition</h2>
+      <ul><li>Filter context comes from visuals, slicers, filters, relationships and DAX.</li><li>Row context means current row and exists naturally in calculated columns and iterators.</li><li>Measures already evaluate in filter context; CALCULATE is not required merely for slicer awareness.</li><li><code>CALCULATE</code> evaluates an expression under modified filter context.</li><li>Inside row context, CALCULATE can perform context transition.</li></ul>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Blue Sales =
+CALCULATE (
+    [Total Sales],
+    Product[Color] = &quot;Blue&quot;
+)</code></pre>
+  <ul class="formula-explain"><li>[Total Sales] is the expression being evaluated.</li><li>CALCULATE modifies filter context.</li><li>The Product[Color] filter becomes Blue while unrelated filters can remain.</li></ul>
+</div>
+      <div class="gotcha"><strong>Exam gotcha:</strong> A base measure like SUM(Sales[Amount]) already responds to a Region slicer.</div>
+      <div class="inline-quiz" data-topic="context_calculate" data-limit="5"></div>
+    </section><section class="concept" id="filters_dax">
+      <span class="pill">Concept 2</span>
+      <h2>DAX filter modifiers</h2>
+      <ul><li><code>REMOVEFILTERS()</code> explicitly removes selected filters.</li><li><code>ALL()</code> can remove filters and can also return an unfiltered table expression.</li><li><code>ALLEXCEPT(Table, Col...)</code> removes filters from a table except listed columns.</li><li><code>KEEPFILTERS()</code> intersects a new CALCULATE filter with an existing same-column filter.</li><li>Same-column Boolean filters in CALCULATE normally replace the existing filter unless KEEPFILTERS is used.</li></ul>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Category % =
+DIVIDE (
+    [Total Sales],
+    CALCULATE (
+        [Total Sales],
+        REMOVEFILTERS ( Product[Category] )
+    )
+)</code></pre>
+  <ul class="formula-explain"><li>The numerator uses the current category.</li><li>The denominator removes only the Product[Category] filter.</li><li>Date, Region and other unrelated filters remain.</li><li>DIVIDE safely handles a zero/blank denominator.</li></ul>
+</div>
+      <div class="gotcha"><strong>Exam gotcha:</strong> REMOVEFILTERS(Product[Category]) does not remove Date, Region or unrelated dimension filters.</div>
+      <div class="inline-quiz" data-topic="filters_dax" data-limit="5"></div>
+    </section><section class="concept" id="iterators">
+      <span class="pill">Concept 3</span>
+      <h2>Iterators, FILTER, VALUES & aggregation choices</h2>
+      <ul><li><code>SUMX</code>, <code>AVERAGEX</code>, <code>MINX</code>, <code>MAXX</code> iterate a table row by row.</li><li>Use SUM when summing an existing column; use SUMX when calculating an expression per row first.</li><li><code>FILTER()</code> returns a filtered table expression.</li><li><code>VALUES(Column)</code> returns distinct values visible in current filter context.</li><li>AVERAGEX(VALUES(Customer[ID]), [Total Sales]) averages customer totals, not transaction values.</li></ul>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Average Customer Sales =
+AVERAGEX (
+    VALUES ( Customer[CustomerID] ),
+    [Total Sales]
+)</code></pre>
+  <ul class="formula-explain"><li>VALUES returns distinct visible customers.</li><li>AVERAGEX iterates those customers.</li><li>[Total Sales] is evaluated for each customer.</li><li>The resulting customer totals are averaged.</li></ul>
+</div>
+      <div class="gotcha"><strong>Exam gotcha:</strong> AVERAGE(Sales[Amount]) and average sales per customer are different questions.</div>
+      <div class="inline-quiz" data-topic="iterators" data-limit="5"></div>
+    </section><section class="concept" id="variables">
+      <span class="pill">Concept 4</span>
+      <h2>Variables & safe arithmetic</h2>
+      <ul><li>Use <code>VAR</code> for readable intermediate results and to avoid repeating expressions.</li><li>A scalar variable stores the result evaluated where it is defined.</li><li>Referencing a stored scalar inside a later CALCULATE does not automatically re-evaluate the variable in the new context.</li><li>Use <code>DIVIDE()</code> for safe division when the denominator can be zero/blank.</li><li>Use <code>RETURN</code> after variable declarations.</li></ul>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>YoY Growth % =
+VAR CurrentSales = [Total Sales]
+VAR PriorSales = [Prior Year Sales]
+RETURN
+    DIVIDE ( CurrentSales - PriorSales, PriorSales )</code></pre>
+  <ul class="formula-explain"><li>VAR stores intermediate scalar results.</li><li>RETURN defines the final output expression.</li><li>The growth denominator is PriorSales.</li></ul>
+</div>
+      <div class="gotcha"><strong>Exam gotcha:</strong> Do not assume variables behave like formulas that are recomputed every time their name is referenced.</div>
+      <div class="inline-quiz" data-topic="variables" data-limit="5"></div>
+    </section><section class="concept" id="time_intelligence">
+      <span class="pill">Concept 5</span>
+      <h2>Date intelligence & period comparisons</h2>
+      <ul><li><code>SAMEPERIODLASTYEAR</code> shifts the current date set one year back.</li><li><code>DATEADD</code> shifts dates by a selected interval such as month or year.</li><li><code>TOTALYTD</code> evaluates a measure over year-to-date dates.</li><li>YoY Growth is typically <code>(Current - Prior) / Prior</code>.</li><li>Sound date-table design and date context are prerequisites for reliable time intelligence.</li></ul>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>Prior Year Sales =
+CALCULATE (
+    [Total Sales],
+    SAMEPERIODLASTYEAR ( &#x27;Date&#x27;[Date] )
+)</code></pre>
+  <ul class="formula-explain"><li>SAMEPERIODLASTYEAR returns the corresponding prior-year date set.</li><li>CALCULATE reevaluates [Total Sales] under that shifted date context.</li></ul>
+</div>
+      <div class="gotcha"><strong>Exam gotcha:</strong> For YoY growth, the prior-year value is the normal comparison baseline/denominator.</div>
+      <div class="inline-quiz" data-topic="time_intelligence" data-limit="5"></div>
+    </section><section class="concept" id="semiadd_calcgroups">
+      <span class="pill">Concept 6</span>
+      <h2>Semi-additive measures, calculation groups & DAX queries</h2>
+      <ul><li>Balances and inventory snapshots are often additive across entities but not across time.</li><li>A closing-balance measure should use the latest applicable data snapshot, not sum all daily snapshots.</li><li>Calculation groups reduce measure proliferation for recurring transformations such as Current, YTD, PY and YoY.</li><li><code>SELECTEDMEASURE()</code> refers to the measure transformed by a calculation item.</li><li>In DAX query view, <code>EVALUATE</code> returns a table expression.</li></ul>
+      
+<div class="code-wrap">
+  <div class="code-label">DAX</div>
+  <pre class="code-block"><code>// Example calculation item
+CALCULATE (
+    SELECTEDMEASURE(),
+    DATESYTD ( &#x27;Date&#x27;[Date] )
+)
+
+// DAX query example
+EVALUATE
+SUMMARIZECOLUMNS (
+    Product[Category],
+    &quot;Sales&quot;, [Total Sales]
+)</code></pre>
+  <ul class="formula-explain"><li>SELECTEDMEASURE refers to whichever measure a calculation group is transforming.</li><li>DATESYTD applies a year-to-date date set.</li><li>EVALUATE is a DAX query keyword that returns a table expression.</li><li>SUMMARIZECOLUMNS groups model results for inspection.</li></ul>
+</div>
+      <div class="gotcha"><strong>Exam gotcha:</strong> A calculation group is useful when many measures need the same transformations; it can be unnecessary for one isolated measure.</div>
+      <div class="inline-quiz" data-topic="semiadd_calcgroups" data-limit="5"></div>
+    </section>
+      <nav class="module-nav" aria-label="Module navigation"><a class="btn secondary" href="data-modeling.html">← Module 2 — Data Modeling</a><a class="btn" href="visualize-analyze.html">Module 4 — Visualize &amp; Analyze Data →</a></nav>
+    </div>
+    <aside class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <a href="#context_calculate">Filter context, row context, CALCULATE &amp; context transition</a><a href="#filters_dax">DAX filter modifiers</a><a href="#iterators">Iterators, FILTER, VALUES &amp; aggregation choices</a><a href="#variables">Variables &amp; safe arithmetic</a><a href="#time_intelligence">Date intelligence &amp; period comparisons</a><a href="#semiadd_calcgroups">Semi-additive measures, calculation groups &amp; DAX queries</a>
+      <hr style="border:0;border-top:1px solid var(--border);margin:12px 0">
+      <a href="formula-reference.html">Formula reference</a>
+      <a href="cheat-sheet.html">Pre-exam cheat sheet</a>
+    </aside>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong>PL-300 Exam Prep by Melarks</strong>
+      <p>Independent study support for experienced Power BI analysts preparing for Microsoft PL-300.</p>
+      <p class="small">This site is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft, Power BI, and PL-300 are trademarks of their respective owner.</p>
+    </div>
+    <div>
+      <strong>Study</strong>
+      <p><a href="prepare-data.html">Prepare Data</a><br>
+      <a href="data-modeling.html">Data Modeling</a><br>
+      <a href="dax-filter-context.html">DAX &amp; Filter Context</a><br>
+      <a href="visualize-analyze.html">Visualize &amp; Analyze</a><br>
+      <a href="service-security.html">Service &amp; Security</a></p>
+    </div>
+    <div>
+      <strong>Resources</strong>
+      <p><a href="practice.html">Practice Questions</a><br>
+      <a href="mock-exam.html">Mock Exam</a><br>
+      <a href="formula-reference.html">Formula Reference</a><br>
+      <a href="cheat-sheet.html">Cheat Sheet</a><br>
+      <a href="exam-strategy.html">Exam Strategy</a><br>
+      <a href="about.html">About</a></p>
+    </div>
+  </div>
+  <div class="wrap small" style="margin-top:20px">
+    © <span data-year>2026</span> Melarks. Educational use only. 
+    <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-300" rel="noopener">Official Microsoft PL-300 study guide</a>.
+  </div>
+</footer>
+<script src="js/app.js" defer></script>
+<script src="js/questions.js" defer></script>
+<script src="js/practice.js" defer></script>
+</body>
+</html>

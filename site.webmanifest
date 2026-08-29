@@ -1,0 +1,16 @@
+{
+  "name": "Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks",
+  "short_name": "PL-300 Prep",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f7fbfd",
+  "theme_color": "#03045e",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
