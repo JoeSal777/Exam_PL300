@@ -51,7 +51,6 @@ button,input,select{font:inherit}
 .toc strong{display:block;margin-bottom:7px}.toc a{display:block;padding:5px 0;font-size:.84rem;color:var(--muted)}
 .module-nav{display:flex;justify-content:space-between;gap:12px;margin:24px 0}.module-nav a{flex:1}
 .concept{padding:24px;margin:0 0 20px;scroll-margin-top:90px}.concept h2{margin:.35rem 0 .6rem;font-size:1.55rem;letter-spacing:-.025em}.concept ul{padding-left:20px}
-.concept-explanation{font-size:1rem}.concept-explanation p{margin:.75rem 0}.concept-explanation .concept-lead{font-size:1.06rem;color:var(--text);margin:.65rem 0 1rem}.concept-explanation h3{font-size:1.08rem;margin:1.25rem 0 .45rem;letter-spacing:-.015em}.concept-explanation ul{margin:.4rem 0 1rem}.concept-explanation li{margin:.4rem 0}.definition-box{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:13px 14px;margin:14px 0}.definition-box strong{color:var(--blue)}.example-box{border-left:4px solid var(--cyan);background:color-mix(in srgb,var(--cyan) 7%,var(--surface));padding:12px 14px;border-radius:10px;margin:14px 0}.concept-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.94rem}.concept-table th,.concept-table td{padding:9px 10px;border:1px solid var(--border);text-align:left;vertical-align:top}.concept-table th{background:var(--surface-2);font-weight:800}.concept-table td:first-child{font-weight:700}.concept-explanation code{background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1px 5px;font-size:.92em}
 .gotcha{border-left:4px solid var(--warn);background:color-mix(in srgb,var(--warn) 10%,var(--surface));padding:12px 14px;border-radius:10px;margin:16px 0}
 .exam-tip{border-left:4px solid var(--cyan);background:var(--surface-2);padding:12px 14px;border-radius:10px;margin:16px 0}
 .code-wrap{margin:18px 0}.code-label{font-size:.75rem;font-weight:850;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);margin-bottom:5px}
@@ -83,8 +82,40 @@ button,input,select{font:inherit}
 }
 @media(max-width:640px){
  .wrap{width:min(100% - 20px,1160px)}.brand span:last-child{display:none}.topbar{min-height:62px}.hero{padding-top:46px}.hero h1{font-size:2.4rem}
- .grid,.stats{grid-template-columns:1fr}.concept{padding:18px}.yesno-row,.match-row{grid-template-columns:1fr}.mock-top{top:63px;align-items:flex-start}.footer-grid{grid-template-columns:1fr}.actions .btn{width:100%}.module-nav{flex-direction:column}.concept-table{display:block;overflow-x:auto;white-space:normal}
+ .grid,.stats{grid-template-columns:1fr}.concept{padding:18px}.yesno-row,.match-row{grid-template-columns:1fr}.mock-top{top:63px;align-items:flex-start}.footer-grid{grid-template-columns:1fr}.actions .btn{width:100%}.module-nav{flex-direction:column}
 }
+
+/* Mobile overflow hardening for lesson, progress and quiz content */
+html,body{max-width:100%;overflow-x:hidden}
+.layout>*,.layout>div,.concept,.concept-explanation,.inline-quiz,.question,.notice,.quiz-shell,.feedback,.case-box{min-width:0;max-width:100%}
+.concept p,.concept li,.concept h2,.concept h3,.question-stem,.option,.answer-notes li,.notice,.feedback{overflow-wrap:anywhere;word-break:normal}
+img,svg,video,canvas{max-width:100%;height:auto}
+.code-wrap,.code-block,pre{min-width:0;max-width:100%}
+.code-block{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.concept-table,table{max-width:100%}
+.concept-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.quiz-head{flex-wrap:wrap;min-width:0}
+.quiz-head>*{min-width:0}
+.options,.option{min-width:0;max-width:100%}
+.option input{flex:0 0 auto}
+.yesno-row,.match-row{grid-template-columns:minmax(0,1fr) minmax(0,180px)}
+.order-row{grid-template-columns:84px minmax(0,1fr)}
+.match-row select,.order-row select,.practice-toolbar select,.practice-toolbar input,.searchbox{min-width:0;max-width:100%}
+
+@media(max-width:640px){
+ .layout,.layout>div,.concept,.concept-explanation,.inline-quiz,.question,.notice{width:100%;min-width:0;max-width:100%}
+ .concept{overflow:hidden}
+ .concept ul,.formula-explain,.answer-notes{padding-left:1.2rem}
+ .quiz-head{align-items:flex-start}
+ .quiz-head .small{width:100%}
+ .yesno-row,.match-row,.order-row{grid-template-columns:1fr}
+ .match-row select,.order-row select{width:100%}
+ .question-stem{max-width:100%}
+ .option{width:100%}
+ .code-block{font-size:.82rem;padding:13px}
+ .concept-table{width:100%}
+}
+
 @media print{
  .site-header,.toc,.inline-quiz,.footer,.actions,.practice-toolbar,.no-print{display:none!important}
  body{background:white;color:black}.wrap{width:100%}.concept,.card,.formula-card{box-shadow:none;border:1px solid #bbb;break-inside:avoid}.page-hero{padding-top:0}
