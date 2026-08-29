@@ -1,0 +1,104 @@
+Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks
+PL-300 EXAM CHEAT SHEET
+Current curriculum baseline: Microsoft skills measured as of April 20, 2026.
+
+PREPARE THE DATA
+----------------
+• Import = in-memory copy; DirectQuery = source queried at interaction time; DirectLake = Fabric/OneLake storage mode.
+• Profile beyond the top 1,000 rows when uniqueness/quality conclusions matter.
+• Correct data type first; use locale-aware conversion for ambiguous dates/numbers.
+• Append adds rows. Merge joins columns by key. Left Anti returns unmatched left rows.
+• Reference inherits upstream query changes; Duplicate is an independent copy of steps.
+• Unpivot turns columns into attribute/value rows; Unpivot Other Columns is resilient to new period columns.
+• Remove unused rows/columns early and preserve query folding where possible.
+• Incremental refresh: Date/Time RangeStart + RangeEnd, commonly >= RangeStart and < RangeEnd.
+• Enable Load controls whether a query becomes a model table; refresh participation is a separate setting.
+• Privacy levels govern source isolation during combination; they are not RLS.
+
+DATA MODELING
+-------------
+• Prefer a star schema: dimensions on the 1 side, fact table on the many side.
+• Define grain first: what exactly does one fact-table row represent?
+• Single-direction dimension → fact is the default best practice; bidirectional is a deliberate exception.
+• Many-to-many business relationships often need a bridge table.
+• Inactive relationships can be activated inside CALCULATE with USERELATIONSHIP.
+• Use role-playing date dimensions when independent Order Date and Ship Date slicers are required.
+• Date table: unique, non-null, contiguous date column; mark it as Date Table where appropriate.
+• Month Name sorts by Month Number; Month-Year needs a sequential YearMonth key.
+• Measures are dynamic filter-context calculations; calculated columns are stored row-level values.
+• High-cardinality unused text/IDs are common model-size targets. Hiding a column does not reduce model size.
+
+DAX & FILTER CONTEXT
+--------------------
+• Measures already respond to filter context. CALCULATE is for changing context, not merely 'making filters work'.
+• Row context = current row; filter context = visible subset from visuals, slicers, filters and relationships.
+• CALCULATE modifies filter context and performs context transition when row context exists.
+• REMOVEFILTERS(Column) removes only that column's filter; unrelated filters remain.
+• KEEPFILTERS intersects a new same-column filter with the existing filter.
+• SUMX/AVERAGEX iterate a table; SUM/AVERAGE aggregate existing columns.
+• VALUES(Column) returns distinct visible values; useful for entity-grain averages.
+• DIVIDE is safer than / when denominator can be zero or blank.
+• SAMEPERIODLASTYEAR shifts the current date set one year; DATEADD shifts by a chosen interval.
+• Variables store results in the context where they are evaluated; they do not magically recalculate after a later context change.
+• Balances are often semi-additive: aggregate across entities, but use a closing/last-data-date logic across time.
+• Calculation groups reuse transformations across measures; SELECTEDMEASURE identifies the current measure.
+• DAX Query View uses queries such as EVALUATE to inspect model results.
+
+VISUALIZE & ANALYZE
+-------------------
+• Line = trend; bar/column = category comparison; scatter = numeric relationship; matrix = hierarchy/crosstab.
+• Gauge = value vs target/range. KPI = status/trend with target over time.
+• Filter restricts a target visual; Highlight keeps broader context and emphasizes a subset.
+• Drill down stays within a hierarchy; Drillthrough navigates to a detail page with context.
+• Report page tooltip shows rich hover content without navigation.
+• Bookmarks can capture Data, Display and Current page; avoid Data when a bookmark should only show/hide visuals.
+• Top N requires a value measure; sorting descending alone does not limit rows.
+• Field parameter switches fields/measures; What-if parameter provides numeric scenario input.
+• Key influencers ranks factors associated with an outcome; decomposition tree breaks a measure across dimensions.
+• Q&A = user asks natural language. Smart narrative = Power BI generates text.
+• Analytics features can include reference lines, forecasting, anomaly/outlier detection, clustering and error bars.
+• Paginated reports are RDL, authored in Power BI Report Builder, and optimized for pixel-perfect/print/multi-page output.
+• Visual calculations operate on a visual's result structure and are not reusable semantic-model measures.
+• Accessibility: alt text, tab order, contrast, labels/icons—never rely on color alone.
+
+POWER BI SERVICE, SECURITY & GOVERNANCE
+---------------------------------------
+• Workspace = collaboration/authoring. App = curated distribution to consumers.
+• Viewer is the typical workspace role when RLS must constrain a user; elevated editors are not constrained the same way.
+• Build permission allows creating reports/Analyze in Excel from a semantic model; Reshare allows passing access onward.
+• Dynamic RLS commonly uses a user-access mapping table + USERPRINCIPALNAME().
+• Multiple RLS roles are additive (union/OR), not restrictive AND.
+• OLS protects model objects such as tables/columns; hiding fields is not security.
+• Dashboard = single-page Service canvas. Tiles are pinned/supported dashboard items and can link back to source reports.
+• App audiences control which content is visible; RLS controls which data rows are visible.
+• Gateway provides Service-to-on-prem connectivity; source credentials are separate.
+• Scheduled refresh updates imported data; automatic page refresh periodically re-queries supported DirectQuery pages.
+• Subscriptions deliver content on a schedule/condition. Data alerts are threshold-based notifications in supported dashboard scenarios.
+• Usage metrics = adoption. Performance Analyzer = slow visual/DAX diagnosis.
+• Lineage/impact analysis = downstream dependencies. Query Dependencies = Power Query query/source dependencies.
+• Promoted = recommended. Certified = formally reviewed/authoritative.
+• Sensitivity labels classify/protect content; they do not replace RLS.
+• Publishing deploys report/model design changes; refresh only updates data in an existing model.
+• Deployment pipelines support Dev → Test → Prod lifecycle.
+
+HIGH-VALUE EXAM GOTCHAS
+-----------------------
+• Hide ≠ remove; hide ≠ security.
+• Append = rows; Merge = columns.
+• Refresh ≠ publish.
+• Gateway online ≠ source credentials valid.
+• Usage metrics ≠ Performance Analyzer.
+• Query Dependencies ≠ Lineage view.
+• Dashboard ≠ report.
+• App audience ≠ RLS.
+• Workspace role ≠ semantic-model Build permission.
+• Q&A ≠ Smart narrative.
+• Sort descending ≠ Top N.
+• Drill down ≠ Drillthrough.
+• Calculated column ≠ measure.
+• Power Query parameter ≠ What-if parameter ≠ Field parameter.
+• Paginated report ≠ ordinary interactive PBIX report.
+• Raw mock percentage ≠ Microsoft's scaled certification score.
+
+Reminder: This is an independent study resource. Always compare final preparation with the current official Microsoft PL-300 study guide.
+Progress on melarks.com is stored locally in the browser and is not synced across devices.
