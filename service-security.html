@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Power BI Service &amp; Security | PL-300 Exam Prep by Melarks</title>
+<meta content="PL-300 Power BI Service guide covering workspaces, apps, dashboards, tiles, alerts, gateways, refresh, permissions, RLS, OLS and governance." name="description"/>
+<meta content="index,follow,max-image-preview:large" name="robots"/>
+<link href="https://melarks.com/service-security.html" rel="canonical"/>
+<meta content="#03045e" name="theme-color"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="website" property="og:type"/>
+<meta content="Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks" property="og:site_name"/>
+<meta content="Power BI Service &amp; Security | PL-300 Exam Prep by Melarks" property="og:title"/>
+<meta content="PL-300 Power BI Service guide covering workspaces, apps, dashboards, tiles, alerts, gateways, refresh, permissions, RLS, OLS and governance." property="og:description"/>
+<meta content="https://melarks.com/service-security.html" property="og:url"/>
+<meta content="https://melarks.com/assets/og-cover.png" property="og:image"/>
+<meta content="PL-300 Exam Prep by Melarks" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Power BI Service &amp; Security | PL-300 Exam Prep by Melarks" name="twitter:title"/>
+<meta content="PL-300 Power BI Service guide covering workspaces, apps, dashboards, tiles, alerts, gateways, refresh, permissions, RLS, OLS and governance." name="twitter:description"/>
+<meta content="https://melarks.com/assets/og-cover.png" name="twitter:image"/>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="site.webmanifest" rel="manifest"/>
+<link href="css/styles.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Power BI Service & Security | PL-300 Exam Prep by Melarks", "description": "PL-300 Power BI Service guide covering workspaces, apps, dashboards, tiles, alerts, gateways, refresh, permissions, RLS, OLS and governance.", "url": "https://melarks.com/service-security.html", "isPartOf": {"@type": "WebSite", "name": "Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks", "url": "https://melarks.com"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 5 — Power BI Service & Security", "description": "Learn how workspaces, Apps, dashboards, permissions, RLS, gateways, refresh and governance work in the Power BI service.", "educationalLevel": "Intermediate", "learningResourceType": "Study guide", "about": "Microsoft Power BI Data Analyst PL-300 certification"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://melarks.com/"}, {"@type": "ListItem", "position": 2, "name": "Module 5 — Power BI Service & Security", "item": "https://melarks.com/service-security.html"}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="wrap topbar">
+<a aria-label="Melarks PL-300 Exam Prep home" class="brand" href="index.html">
+<span aria-hidden="true" class="brand-mark">PL<br/>300</span>
+<span>PL-300 Prep by Melarks</span>
+</a>
+<nav aria-label="Primary navigation" class="nav"><a href="index.html">Home</a>
+<a href="prepare-data.html">Study Guide</a>
+<a href="formula-reference.html">Formula Reference</a>
+<a href="practice.html">Practice</a>
+<a href="mock-exam.html">Mock Exam</a>
+<a href="cheat-sheet.html">Cheat Sheet</a>
+<a href="about.html">About</a></nav>
+<div style="display:flex;gap:7px">
+<button aria-label="Toggle dark and light theme" class="icon-btn" data-theme-toggle="" type="button">◐</button>
+<button aria-label="Open navigation menu" class="menu-btn" data-menu="" type="button">Menu</button>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="wrap">
+<div class="breadcrumbs"><a href="index.html">Home</a> / Study Guide / Module 5 — Power BI Service &amp; Security</div>
+<span class="eyebrow">15–20% of exam</span>
+<h1>Module 5 — Power BI Service &amp; Security</h1>
+<p>Publishing a report is only one part of delivering a Power BI solution. This module explains how workspaces, apps and dashboards are used for collaboration and distribution; how permissions, RLS and OLS control access; how gateways and refresh keep data available; and how governance features help organizations manage trusted Power BI content.</p>
+<div class="actions">
+<a class="btn" href="#module-content">Start module</a>
+<a class="btn secondary" href="practice.html">Open full practice bank</a>
+</div>
+</div>
+</section>
+<section class="section" id="module-content">
+<div class="wrap layout">
+<div>
+<div class="notice" style="margin-bottom:20px">
+<strong>Your progress is saved on this browser.</strong>
+<div class="small" data-global-progress="">0/160 questions completed</div>
+</div>
+<section class="concept" id="workspaces_apps">
+<span class="pill">Concept 1</span>
+<h2>Workspaces, roles, apps &amp; distribution</h2><div class="concept-explanation"><p class="concept-lead">The Power BI service separates <strong>content creation and collaboration</strong> from <strong>content distribution</strong>. Workspaces are primarily where teams manage Power BI items, while Apps and sharing mechanisms are how content is commonly delivered to consumers.</p>
+<h3>Workspace roles</h3>
+<p>Workspace access is controlled through four standard roles. The exact capabilities vary by role, but the exam-level distinction is important:</p>
+<table class="concept-table"><tr><th>Role</th><th>Typical purpose</th></tr><tr><td>Admin</td><td>Full workspace administration, including managing access and workspace settings.</td></tr><tr><td>Member</td><td>Broad content management and collaboration capabilities below Admin.</td></tr><tr><td>Contributor</td><td>Create, edit and publish content without full workspace administration.</td></tr><tr><td>Viewer</td><td>Consume and interact with content without editing workspace items.</td></tr></table>
+<p>Use <strong>least privilege</strong>: give a person only the access needed for their task. This matters for security and because RLS behavior differs for users with elevated workspace editing permissions. A user who must consume content under RLS generally belongs in a Viewer/consumer pattern rather than being made a Contributor simply to gain access.</p>
+<h3>Apps, audiences and direct sharing</h3>
+<p>A <strong>Power BI App</strong> packages selected workspace content into a curated experience for a broader audience. Consumers do not need to become workspace collaborators just to use the App. <strong>App audiences</strong> let you expose different subsets of the App's content to different groups—for example, Finance sees finance reports while Sales sees sales reports.</p>
+<p>App audiences control <strong>which items</strong> a user can see; they do not replace RLS, which controls <strong>which rows of data</strong> the user can see inside a report.</p>
+<p><strong>Direct sharing</strong> or item-level access is useful when a smaller set of users needs access to a specific report or other item. For broad, curated organizational distribution, an App is usually easier to manage.</p>
+<div class="example-box"><strong>Example:</strong> A report-authoring team works in a workspace. Hundreds of business users consume a published App. The App uses audiences to show different reports to different departments, while dynamic RLS inside the semantic model restricts each user to the rows they are authorized to see.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Do not make a user Contributor merely because they need Build permission on a semantic model.</div>
+<div class="inline-quiz" data-limit="5" data-topic="workspaces_apps"></div>
+</section><section class="concept" id="dashboards_tiles">
+<span class="pill">Concept 2</span>
+<h2>Dashboards &amp; tiles</h2><div class="concept-explanation"><p class="concept-lead">A <strong>Power BI dashboard</strong> is a single-page canvas that exists in the Power BI service. It is intended for at-a-glance monitoring and can bring together information from supported report visuals or other tile sources. A dashboard is not the same thing as a report page in Power BI Desktop.</p>
+<h3>Tiles</h3>
+<p>The individual objects displayed on a dashboard are called <strong>tiles</strong>. A tile can be created by pinning a visual from a report or from supported Q&amp;A content. Dashboards can also contain supported standalone tile types such as text boxes, images, web content, video or streaming-data tiles depending on the service experience.</p>
+<p>When a report visual is pinned, the tile acts as a dashboard representation of that source visual. Selecting the tile commonly opens the underlying report or source content for deeper exploration.</p>
+<h3>Dashboard vs report</h3>
+<table class="concept-table"><tr><th>Dashboard</th><th>Report</th></tr><tr><td>Single-page Service canvas.</td><td>Can contain multiple interactive pages.</td></tr><tr><td>Built from tiles.</td><td>Built from report visuals connected to a semantic model.</td></tr><tr><td>Strong for monitoring and overview.</td><td>Strong for detailed analysis, slicing, drill and exploration.</td></tr><tr><td>Created/managed in the Power BI service.</td><td>Commonly authored in Desktop or the Service.</td></tr></table>
+<p>A pinned tile and its source report are related but not identical objects. For example, the tile can retain the visual type that was originally pinned even if the source report visual is later changed to another type, while refreshed data can still update what the dashboard shows.</p>
+<div class="example-box"><strong>Example:</strong> An executive dashboard might show eight high-level KPI tiles from several reports. Selecting a sales tile opens the full Sales Performance report where users can filter, drill and explore the detail.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Dashboard ≠ report. Dashboard is one Service page of tiles; reports can be multi-page and highly interactive.</div>
+<div class="inline-quiz" data-limit="5" data-topic="dashboards_tiles"></div>
+</section><section class="concept" id="alerts_subscriptions">
+<span class="pill">Concept 3</span>
+<h2>Subscriptions &amp; data alerts</h2><div class="concept-explanation"><p class="concept-lead">Subscriptions and data alerts both notify users, but they are designed for different triggers. A <strong>subscription delivers content on a schedule or supported condition</strong>; a <strong>data alert notifies a user when a monitored metric crosses a threshold</strong>.</p>
+<h3>Subscriptions</h3>
+<p>A subscription sends a snapshot or link to supported Power BI report or dashboard content, typically by email. It is useful when users want a regular delivery such as a daily operations report or a weekly executive summary without having to remember to open Power BI first.</p>
+<p>Depending on the Power BI experience and item type, subscriptions can support schedule and other delivery conditions. The central idea is that a subscription is about <strong>delivering content</strong>, not evaluating a dashboard KPI against a threshold.</p>
+<h3>Data alerts</h3>
+<p>Classic Power BI data alerts are configured on supported dashboard metric tiles such as card, KPI and gauge tiles. The alert watches refreshed dashboard data and notifies the user when the configured condition is met.</p>
+<ul><li>Alerts are personal to the user who creates them; creating an alert does not automatically create the same alert for everyone who views the dashboard.</li><li>The alert depends on the underlying data being refreshed or updated. If the semantic model never receives new values, there is nothing new for the alert to evaluate.</li><li>Alerts are associated with supported dashboard tiles rather than being a generic alert feature for every visual on every report page.</li></ul>
+<div class="example-box"><strong>Choose by requirement:</strong> “Email the regional report every Monday at 08:00” → subscription. “Notify me when inventory falls below 500 units on this KPI tile” → data alert.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> A Monday morning email is a subscription. 'Notify me when KPI &lt; 90' is a data alert.</div>
+<div class="inline-quiz" data-limit="5" data-topic="alerts_subscriptions"></div>
+</section><section class="concept" id="gateway_refresh">
+<span class="pill">Concept 4</span>
+<h2>Gateway, scheduled refresh &amp; automatic page refresh</h2><div class="concept-explanation"><p class="concept-lead">When the Power BI service needs data that is not directly reachable from the cloud, an <strong>on-premises data gateway</strong> provides the secure connection path. Refresh and gateway questions are easier when you separate <strong>connectivity, authentication, refresh behavior and report-query behavior</strong>.</p>
+<h3>Gateway modes</h3>
+<p>The <strong>standard on-premises data gateway</strong> is intended for shared, centrally managed enterprise scenarios and can support multiple users and Power BI items. <strong>Personal mode</strong> is designed for an individual user's scenarios and has more limited administrative/sharing capabilities.</p>
+<p>A gateway being <strong>Online</strong> means the gateway service is reachable; it does not prove that the database credentials stored for a connection are valid or that the source account still has permission to read the data.</p>
+<h3>Scheduled refresh</h3>
+<p>For an Import semantic model, scheduled refresh connects to the source, runs the configured queries and updates the model with newer data. If a refresh fails, begin with <strong>refresh history and the error details</strong>, then investigate gateway availability, credentials, source permissions, network/source availability and any schema or Power Query changes.</p>
+<p>DirectQuery behaves differently because report interactions query the source rather than depending on a periodic full import refresh for current detailed data. However, gateway connectivity can still be required when the DirectQuery source is on premises.</p>
+<h3>Automatic page refresh</h3>
+<p><strong>Automatic page refresh</strong> is a report-page feature that periodically refreshes supported visuals, commonly for DirectQuery monitoring scenarios. It is not the same as semantic-model scheduled refresh. Scheduled refresh reloads imported data; automatic page refresh causes a report page to query for updated results at a configured interval.</p>
+<div class="example-box"><strong>Example:</strong> A scheduled refresh suddenly fails after the database password was changed. If the gateway is still Online, reinstalling the gateway is not the first step—the stored source credentials should be updated.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Gateway online does not guarantee valid source credentials. Scheduled refresh and automatic page refresh solve different problems.</div>
+<div class="inline-quiz" data-limit="5" data-topic="gateway_refresh"></div>
+</section><section class="concept" id="permissions_rls">
+<span class="pill">Concept 5</span>
+<h2>Semantic-model permissions &amp; row-level security</h2><div class="concept-explanation"><p class="concept-lead">Power BI security has multiple layers. Workspace roles determine what users can do in a workspace, semantic-model permissions determine how they can use a model, and <strong>row-level security (RLS)</strong> determines which rows they can see when security is enforced.</p>
+<h3>Semantic-model permissions</h3>
+<ul><li><strong>Read</strong> supports consuming content that uses the semantic model.</li><li><strong>Build</strong> allows users to create new reports or other supported analysis from the semantic model, including scenarios such as Analyze in Excel where available.</li><li><strong>Reshare</strong> allows a user to pass access to other users.</li></ul>
+<p>These permissions are distinct from workspace roles. If a user only needs to consume a report under RLS and create their own report from the same governed semantic model, a <strong>Viewer/consumer access pattern plus Build permission</strong> is generally more appropriate than making that person a Contributor.</p>
+<h3>Static and dynamic RLS</h3>
+<p><strong>Static RLS</strong> uses a fixed role filter such as <code>Region[Region] = "West"</code>. <strong>Dynamic RLS</strong> uses the signed-in user's identity to determine the permitted rows, usually through a security mapping table.</p>
+<p>A common dynamic pattern stores one or more allowed entities against a user's UPN and filters the mapping table with <code>USERPRINCIPALNAME()</code>. Relationships then propagate the permitted entities to the business data.</p>
+<p>RLS roles are defined in the model and users or groups are assigned to those roles after publishing. If a user belongs to multiple RLS roles, their permissions are generally <strong>additive</strong>: the visible rows are the union of what the roles allow rather than the intersection.</p>
+<div class="definition-box"><strong>Important:</strong> Workspace editors such as Admins, Members and Contributors are not constrained by RLS in the same way as ordinary Viewer/consumer users. Do not grant an elevated role merely as a shortcut for report access when the user is supposed to be restricted by RLS.</div></div>
+<div class="code-wrap">
+<div class="code-label">DAX</div>
+<pre class="code-block"><code>UserAccess[UPN] = USERPRINCIPALNAME()</code></pre>
+<ul class="formula-explain"><li><code>USERPRINCIPALNAME()</code> returns the identity of the signed-in user, commonly in an email-style UPN format in the Power BI service.</li><li><code>UserAccess[UPN] = ...</code> is a role filter expression. It keeps only mapping-table rows whose UPN matches the current user.</li><li>The mapping table should contain the business entities the user is allowed to access—for example, RegionKey, DepartmentKey or CustomerKey.</li><li>Well-designed relationships then propagate those allowed keys from the security table or related dimension into the fact data.</li><li>The function does not itself determine what rows are secure; the mapping-table design and relationship paths are what translate user identity into permitted business data.</li></ul>
+</div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Two restrictive RLS roles usually broaden a user's visible rows rather than making them more restrictive.</div>
+<div class="inline-quiz" data-limit="5" data-topic="permissions_rls"></div>
+</section><section class="concept" id="governance_publish">
+<span class="pill">Concept 6</span>
+<h2>OLS, sensitivity, endorsement, lineage, publish &amp; update</h2><div class="concept-explanation"><p class="concept-lead">Governance features help an organization decide <strong>what content is trusted, how sensitive it is, who can access it, what depends on it, and how updates are delivered</strong>. These concepts are related but solve different problems.</p>
+<h3>RLS, OLS and hiding fields</h3>
+<p><strong>RLS</strong> restricts rows. <strong>Object-level security (OLS)</strong> restricts access to model objects such as specific tables or columns. Simply hiding a column from the Fields pane is an authoring convenience; it does not prevent an authorized user or tool from accessing the field.</p>
+<h3>Sensitivity and endorsement</h3>
+<p><strong>Sensitivity labels</strong> classify and protect content according to organizational information-protection policy. They are about handling sensitive information, not filtering model rows.</p>
+<p><strong>Promoted</strong> content is recommended or highlighted for reuse. <strong>Certified</strong> content represents a stronger organizational validation that the item is trusted and authoritative according to the organization's certification process.</p>
+<h3>Lineage, impact and usage</h3>
+<p><strong>Lineage view</strong> and impact analysis help you understand dependencies between Power BI items and upstream/downstream assets. This is useful before changing or deleting a semantic model because you can identify reports or other items that may be affected.</p>
+<p><strong>Usage metrics</strong> answer adoption questions such as who is viewing a report and how often it is used. <strong>Performance Analyzer</strong>, by contrast, answers performance questions about slow visuals and queries. <strong>Query Dependencies</strong> is a Power Query view of query/source dependencies and is different from Power BI service lineage.</p>
+<h3>Publishing, updating and distributing changes</h3>
+<p><strong>Publishing</strong> sends report and semantic-model definition changes—such as new pages, visuals, measures or relationships—to the Power BI service. A <strong>refresh</strong> updates data inside an existing model; it does not deploy new report design or DAX definitions from Desktop.</p>
+<p>If the workspace feeds a Power BI App, changing workspace content does not always mean consumers instantly see a newly curated App experience. The App may need to be updated so the published audience receives the intended changes.</p>
+<p>For larger controlled release processes, organizations may also use lifecycle practices such as separate development, test and production environments. Treat those as release-management concerns, distinct from basic refresh and consumer permissions.</p>
+<div class="example-box"><strong>Example:</strong> You add a new report page and three measures in Desktop. Scheduled refresh cannot make those objects appear in the Service; you publish the updated content. If the report is distributed through an App, update the App as required for consumers to receive the revised package.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Refresh cannot deploy a new report page or measure. Usage metrics cannot diagnose why a visual is slow.</div>
+<div class="inline-quiz" data-limit="5" data-topic="governance_publish"></div>
+</section>
+<nav aria-label="Module navigation" class="module-nav"><a class="btn secondary" href="visualize-analyze.html">← Module 4 — Visualize &amp; Analyze Data</a><a class="btn" href="exam-extras.html">Module 6 — High-Value Exam Extras →</a></nav>
+</div>
+<aside aria-label="On this page" class="toc">
+<strong>On this page</strong>
+<a href="#workspaces_apps">Workspaces, roles, apps &amp; distribution</a><a href="#dashboards_tiles">Dashboards &amp; tiles</a><a href="#alerts_subscriptions">Subscriptions &amp; data alerts</a><a href="#gateway_refresh">Gateway, scheduled refresh &amp; automatic page refresh</a><a href="#permissions_rls">Semantic-model permissions &amp; row-level security</a><a href="#governance_publish">OLS, sensitivity, endorsement, lineage, publish &amp; update</a>
+<hr style="border:0;border-top:1px solid var(--border);margin:12px 0"/>
+<a href="formula-reference.html">Formula reference</a>
+<a href="cheat-sheet.html">Pre-exam cheat sheet</a>
+</aside>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="wrap footer-grid">
+<div>
+<strong>PL-300 Exam Prep by Melarks</strong>
+<p>Independent study support for experienced Power BI analysts preparing for Microsoft PL-300.</p>
+<p class="small">This site is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft, Power BI, and PL-300 are trademarks of their respective owner.</p>
+</div>
+<div>
+<strong>Study</strong>
+<p><a href="prepare-data.html">Prepare Data</a><br/>
+<a href="data-modeling.html">Data Modeling</a><br/>
+<a href="dax-filter-context.html">DAX &amp; Filter Context</a><br/>
+<a href="visualize-analyze.html">Visualize &amp; Analyze</a><br/>
+<a href="service-security.html">Service &amp; Security</a></p>
+</div>
+<div>
+<strong>Resources</strong>
+<p><a href="practice.html">Practice Questions</a><br/>
+<a href="mock-exam.html">Mock Exam</a><br/>
+<a href="formula-reference.html">Formula Reference</a><br/>
+<a href="cheat-sheet.html">Cheat Sheet</a><br/>
+<a href="exam-strategy.html">Exam Strategy</a><br/>
+<a href="about.html">About</a></p>
+</div>
+</div>
+<div class="wrap small" style="margin-top:20px">
+    © <span data-year="">2026</span> Melarks. Educational use only. 
+    <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-300" rel="noopener">Official Microsoft PL-300 study guide</a>.
+  </div>
+</footer>
+<script defer="" src="js/app.js"></script>
+<script defer="" src="js/questions.js"></script>
+<script defer="" src="js/practice.js"></script>
+</body>
+</html>

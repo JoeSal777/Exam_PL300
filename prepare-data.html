@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Prepare the Data | PL-300 Exam Prep by Melarks</title>
+<meta content="PL-300 Prepare the Data study guide covering storage modes, profiling, Power Query transformations, joins, query folding, parameters and incremental refresh." name="description"/>
+<meta content="index,follow,max-image-preview:large" name="robots"/>
+<link href="https://melarks.com/prepare-data.html" rel="canonical"/>
+<meta content="#03045e" name="theme-color"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="website" property="og:type"/>
+<meta content="Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks" property="og:site_name"/>
+<meta content="Prepare the Data | PL-300 Exam Prep by Melarks" property="og:title"/>
+<meta content="PL-300 Prepare the Data study guide covering storage modes, profiling, Power Query transformations, joins, query folding, parameters and incremental refresh." property="og:description"/>
+<meta content="https://melarks.com/prepare-data.html" property="og:url"/>
+<meta content="https://melarks.com/assets/og-cover.png" property="og:image"/>
+<meta content="PL-300 Exam Prep by Melarks" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Prepare the Data | PL-300 Exam Prep by Melarks" name="twitter:title"/>
+<meta content="PL-300 Prepare the Data study guide covering storage modes, profiling, Power Query transformations, joins, query folding, parameters and incremental refresh." name="twitter:description"/>
+<meta content="https://melarks.com/assets/og-cover.png" name="twitter:image"/>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="site.webmanifest" rel="manifest"/>
+<link href="css/styles.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Prepare the Data | PL-300 Exam Prep by Melarks", "description": "PL-300 Prepare the Data study guide covering storage modes, profiling, Power Query transformations, joins, query folding, parameters and incremental refresh.", "url": "https://melarks.com/prepare-data.html", "isPartOf": {"@type": "WebSite", "name": "Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks", "url": "https://melarks.com"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 1 — Prepare the Data", "description": "Learn how Power BI connects to data, profiles quality, transforms data in Power Query, and controls query loading and refresh.", "educationalLevel": "Intermediate", "learningResourceType": "Study guide", "about": "Microsoft Power BI Data Analyst PL-300 certification"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://melarks.com/"}, {"@type": "ListItem", "position": 2, "name": "Module 1 — Prepare the Data", "item": "https://melarks.com/prepare-data.html"}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="wrap topbar">
+<a aria-label="Melarks PL-300 Exam Prep home" class="brand" href="index.html">
+<span aria-hidden="true" class="brand-mark">PL<br/>300</span>
+<span>PL-300 Prep by Melarks</span>
+</a>
+<nav aria-label="Primary navigation" class="nav"><a href="index.html">Home</a>
+<a aria-current="page" href="prepare-data.html">Study Guide</a>
+<a href="formula-reference.html">Formula Reference</a>
+<a href="practice.html">Practice</a>
+<a href="mock-exam.html">Mock Exam</a>
+<a href="cheat-sheet.html">Cheat Sheet</a>
+<a href="about.html">About</a></nav>
+<div style="display:flex;gap:7px">
+<button aria-label="Toggle dark and light theme" class="icon-btn" data-theme-toggle="" type="button">◐</button>
+<button aria-label="Open navigation menu" class="menu-btn" data-menu="" type="button">Menu</button>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="wrap">
+<div class="breadcrumbs"><a href="index.html">Home</a> / Study Guide / Module 1 — Prepare the Data</div>
+<span class="eyebrow">25–30% of exam</span>
+<h1>Module 1 — Prepare the Data</h1>
+<p>This module explains how Power BI connects to data, evaluates its quality, transforms it in Power Query, and controls how the resulting queries are loaded and refreshed. The goal is not just to memorize transformations, but to understand how each choice affects correctness, refresh performance, model size, and maintainability.</p>
+<div class="actions">
+<a class="btn" href="#module-content">Start module</a>
+<a class="btn secondary" href="practice.html">Open full practice bank</a>
+</div>
+</div>
+</section>
+<section class="section" id="module-content">
+<div class="wrap layout">
+<div>
+<div class="notice" style="margin-bottom:20px">
+<strong>Your progress is saved on this browser.</strong>
+<div class="small" data-global-progress="">0/160 questions completed</div>
+</div>
+<section class="concept" id="storage_connections">
+<span class="pill">Concept 1</span>
+<h2>Storage modes &amp; connections</h2><div class="concept-explanation"><p class="concept-lead">Before you transform or model anything, you need to decide <strong>where Power BI will read the data from and how that data will be accessed at report time</strong>. Storage mode affects performance, freshness, refresh behavior, source-system load, and which Power BI features are available.</p>
+<p>In <strong>Import mode</strong>, Power BI copies data into the semantic model and stores it in the VertiPaq engine. Report visuals query this in-memory model rather than repeatedly querying the source, so interaction is usually very fast. The trade-off is that source changes are not visible until the semantic model is refreshed. Import is therefore a strong default when the data volume fits comfortably in the model and the required freshness can be achieved with scheduled or on-demand refresh.</p>
+<p>In <strong>DirectQuery mode</strong>, the detailed data remains in the external source. When a user interacts with a report, Power BI generates queries that are sent to that source. This can reduce the amount of data stored in Power BI and can expose more recent source data, but report performance now depends heavily on source performance, network latency, query design, relationships, and the number of visuals on a page.</p>
+<p><strong>DirectLake</strong> is designed for Microsoft Fabric data stored in OneLake. It allows a semantic model to query lake data without using the traditional Import refresh process or behaving exactly like DirectQuery. It is important to recognize DirectLake as its own storage mode rather than treating it as another name for DirectQuery.</p>
+<h3>Connections, credentials and shared semantic models</h3>
+<ul><li>A <strong>shared semantic model</strong> lets report authors reuse an existing governed model, including relationships, measures and security, instead of rebuilding the same logic in another PBIX file. A report built this way is often called a thin report.</li><li><strong>Credentials</strong> prove that Power BI is allowed to access a source. A <strong>gateway</strong> provides the network path between the Power BI service and supported on-premises sources. A gateway can be online while the stored credentials are still invalid.</li><li><strong>Privacy levels</strong>—Public, Organizational and Private—help Power Query control how data from different sources can be combined. Privacy level is about source isolation during data preparation; it is not row-level security.</li><li>Data source settings are where you commonly change credentials, privacy settings, server/database details and related connection configuration.</li></ul>
+<div class="example-box"><strong>Example:</strong> A sales model containing 20 million rows is refreshed every night and users need fast interactive slicing during the day. Import is normally a better fit than choosing DirectQuery only because the table is large. If the requirement changes to near-real-time visibility and the SQL source can sustain interactive query traffic, DirectQuery becomes more plausible.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Do not choose DirectQuery merely because a table is large. Freshness, platform, source capability and performance all matter.</div>
+<div class="inline-quiz" data-limit="5" data-topic="storage_connections"></div>
+</section><section class="concept" id="profiling_types">
+<span class="pill">Concept 2</span>
+<h2>Data profiling, quality, errors &amp; types</h2><div class="concept-explanation"><p class="concept-lead">Data profiling is the process of examining a dataset before modeling it so that you understand its <strong>quality, shape, data types, distributions, missing values and potential key problems</strong>. Power BI can load technically valid data that is analytically wrong, so profiling is how you catch issues before they become misleading visuals or broken relationships.</p>
+<p>In Power Query, <strong>Column quality</strong> shows the proportion of valid, error and empty values. <strong>Column distribution</strong> helps you understand distinct and unique values, while <strong>Column profile</strong> provides more detailed statistics such as minimum, maximum, average and value distribution. These tools are particularly useful when checking candidate relationship keys, suspicious numerical fields and columns with unexpected blanks.</p>
+<div class="definition-box"><strong>Distinct vs unique:</strong> distinct count is the number of different values in a column. A unique value is a value that appears only once. A customer key can have many distinct values without every value being unique if duplicates exist.</div>
+<p>Power Query profiling can initially be based on the <strong>top 1,000 rows</strong>. That is useful for quick exploration, but it is not enough evidence to conclude that a column is unique or error-free across a large dataset. When the conclusion matters, switch profiling to the entire dataset.</p>
+<h3>Data types and errors</h3>
+<ul><li>Choose a data type based on the <strong>meaning of the field</strong>, not only how it looks. Customer IDs, account numbers and postal codes may contain only digits but are usually identifiers, so text can be more appropriate than a numeric type.</li><li>Use <strong>Change Type using Locale</strong> when a text value such as <code>01/02/2026</code> could mean different dates depending on regional conventions.</li><li><strong>Remove Errors</strong> deletes rows that contain errors in the selected column. Use it only when losing those rows is acceptable.</li><li><strong>Replace Errors</strong> keeps the row and substitutes another value, which is more appropriate when the record must remain in the dataset.</li><li><code>null</code>, an empty string, zero and an error are different states and should not be treated as interchangeable.</li></ul>
+<div class="example-box"><strong>Example:</strong> If a transaction date arrives as text in <code>DD/MM/YYYY</code> format but Power Query interprets it using an <code>MM/DD/YYYY</code> locale, valid dates may be swapped or may produce errors. The correct fix is a locale-aware conversion, not a text replacement that merely makes some rows appear valid.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Distinct count and unique-value count are different profiling ideas, and a sample of 1,000 rows is not proof of uniqueness for the full table.</div>
+<div class="inline-quiz" data-limit="5" data-topic="profiling_types"></div>
+</section><section class="concept" id="transformations_m">
+<span class="pill">Concept 3</span>
+<h2>Core transformations &amp; Power Query M</h2><div class="concept-explanation"><p class="concept-lead">Power Query is Power BI's data preparation layer. Its job is to turn source data into a clean, analysis-ready tabular structure <strong>before the data enters the semantic model</strong>. Most transformations you perform through the Power Query interface are translated into steps written in the Power Query M language.</p>
+<p>Common transformations include splitting or extracting text, replacing values, filling values down or up, changing data types, creating conditional or custom columns, grouping rows, removing duplicates, promoting headers and adding an index. The important exam skill is not simply recognizing the command name; it is knowing <strong>how the transformation changes the shape or grain of the data</strong>.</p>
+<h3>Pivot, unpivot and transpose</h3>
+<ul><li><strong>Pivot</strong> takes values that currently appear down rows and turns them into separate columns. It normally requires an aggregation if more than one source row maps to the same output cell.</li><li><strong>Unpivot</strong> converts multiple columns into attribute/value rows. This is especially useful when data arrives in a wide format such as one column for every month.</li><li><strong>Unpivot Other Columns</strong> is often more maintainable than selecting a fixed set of month columns. You identify the columns that should remain fixed, and Power Query unpivots all other columns—including future period columns that may appear later.</li><li><strong>Transpose</strong> swaps the entire table's rows and columns. It is not the same operation as Pivot.</li></ul>
+<p>Power Query can also turn semi-structured data—such as JSON records, lists or XML—into tables by expanding nested objects until the required fields are represented as ordinary columns.</p>
+<h3>Understanding M and <code>each</code></h3>
+<p>M is a functional language. The keyword <code>each</code> is shorthand for creating a function whose current row is represented internally by <code>_</code>. In a row expression such as <code>each [Quantity] * [UnitPrice]</code>, the column references are evaluated for the current row.</p>
+<div data-added="group-by"><h3>Group By changes the table grain</h3><p><strong>Group By</strong> collapses multiple input rows into one row per grouping key and calculates aggregations such as Sum, Count, Minimum, Maximum or Average. Because it reduces detail, use it only when the resulting grain matches the analytical requirement. Once transaction rows have been grouped into monthly totals, the individual transactions are no longer available in that query output.</p></div><div class="example-box"><strong>Modeling principle:</strong> If a value is a stable row-level transformation that can be created during data preparation, Power Query is usually preferable to creating unnecessary calculated columns later in DAX. This keeps shaping logic in the preparation layer and can reduce model complexity.</div></div>
+<div class="code-wrap">
+<div class="code-label">Power Query M</div>
+<pre class="code-block"><code>Table.AddColumn(
+    Sales,
+    "Revenue",
+    each [Quantity] * [UnitPrice],
+    type number
+)</code></pre>
+<ul class="formula-explain"><li><code>Table.AddColumn</code> takes a table as its first argument and returns a new table that contains all original columns plus the added column; Power Query steps are immutable transformations rather than in-place edits.</li><li><code>Sales</code> is the input table being transformed. In a real query this name usually refers to a previous step in the <code>let</code> expression.</li><li><code>"Revenue"</code> is the name of the new column that will appear in the returned table.</li><li><code>each [Quantity] * [UnitPrice]</code> defines the row-level calculation. <code>each</code> is shorthand for a one-argument function, and the bracketed column references are read from the current row.</li><li><code>type number</code> explicitly assigns the new column a numeric type. Setting the type matters for later aggregation, folding and validation.</li></ul>
+</div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Transpose is not Pivot. Also, an unnecessary Index step can add work and may interrupt query folding.</div>
+<div class="inline-quiz" data-limit="5" data-topic="transformations_m"></div>
+</section><section class="concept" id="merge_append">
+<span class="pill">Concept 4</span>
+<h2>Merge, append, joins &amp; folder combinations</h2><div class="concept-explanation"><p class="concept-lead">Merge and Append both combine queries, but they solve fundamentally different problems. <strong>Append increases the number of rows</strong>; <strong>Merge increases the number of columns by matching keys</strong>. This distinction is one of the most common PL-300 question patterns.</p>
+<p>Use <strong>Append</strong> when two or more tables represent the same type of entity or event and have compatible schemas—for example, January transactions and February transactions. The rows are stacked into one longer table. Column names and data types should be standardized so that values land in the correct output columns.</p>
+<p>Use <strong>Merge</strong> when one query needs attributes from another query. A merge works like a database join: Power Query compares one or more key columns and returns rows according to the selected join type. After the merge, the matching table appears as a nested column that you expand to select the fields you need.</p>
+<table class="concept-table"><tr><th>Join type</th><th>What it returns</th></tr><tr><td>Inner</td><td>Only rows that have matches in both tables.</td></tr><tr><td>Left Outer</td><td>All rows from the left table plus matching data from the right.</td></tr><tr><td>Full Outer</td><td>All rows from both tables, matched where possible.</td></tr><tr><td>Left Anti</td><td>Rows from the left table that have no match in the right.</td></tr><tr><td>Right Anti</td><td>Rows from the right table that have no match in the left.</td></tr></table>
+<p>Join keys should represent the same business meaning and use compatible data types. Also remember that duplicate keys can multiply rows during a merge. If one customer key appears twice on the left and three times on the right, matching that key can produce six combinations.</p>
+<h3>Combining files</h3>
+<p>When a folder receives recurring files with the same structure, use the <strong>Folder connector and Combine Files</strong> pattern. Power Query creates a sample-file transformation and applies the same logic to each file. This is much more scalable than importing every monthly file manually.</p>
+<div class="example-box"><strong>Example:</strong> To identify customers in a master list who have no matching transaction record, merge the customer table to transactions using a <strong>Left Anti</strong> join. To combine twelve monthly CSV files into one transaction table, use Append or, more maintainably, the Folder connector.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Append and Merge are frequent distractors. Ask whether the requirement is 'more rows' or 'more columns by key.'</div>
+<div class="inline-quiz" data-limit="5" data-topic="merge_append"></div>
+</section><section class="concept" id="query_folding">
+<span class="pill">Concept 5</span>
+<h2>Query folding &amp; efficient shaping</h2><div class="concept-explanation"><p class="concept-lead">Query folding means Power Query translates supported transformation steps into a query that the source system can execute. Instead of retrieving a large raw table and transforming every row locally, Power BI asks the source to do as much of the work as possible.</p>
+<p>For a relational database, a filter in Power Query might be translated into a SQL <code>WHERE</code> clause and a column-selection step into a SQL <code>SELECT</code> list. This can dramatically reduce the amount of data transferred across the network and the work performed by the Power BI refresh process.</p>
+<h3>Why step order matters</h3>
+<p>Transformations such as filtering rows, selecting columns and some joins can often fold. Other operations may not be translatable for a particular connector. Once a non-foldable step occurs, later steps may also need to execute locally. Therefore, place highly selective, foldable operations—especially row filters and removal of unnecessary columns—as early as is logically safe.</p>
+<ul><li>Use <strong>query folding indicators</strong> or <strong>View Native Query</strong> where the connector supports them to determine whether steps are being pushed to the source.</li><li>Do not assume every operation folds for every connector. Folding capability depends on the source and the transformation.</li><li>Query folding matters in <strong>Import</strong> mode because it can improve refresh efficiency; it is not only a DirectQuery topic.</li><li>Incremental refresh is particularly effective when the date-range filter can fold to the source.</li></ul>
+<div class="example-box"><strong>Example:</strong> If an 80-million-row SQL table is filtered to the last year and only six columns are required, applying those foldable filters before a custom non-foldable transformation can allow SQL Server to return a much smaller dataset to Power BI.</div></div>
+<div class="code-wrap">
+<div class="code-label">Power Query M</div>
+<pre class="code-block"><code>let
+    Source = Sql.Database("SERVER", "SalesDB"),
+    Sales = Source{[Schema="dbo", Item="Sales"]}[Data],
+    Filtered = Table.SelectRows(Sales, each [OrderDate] &gt;= #date(2026,1,1)),
+    Selected = Table.SelectColumns(Filtered,{"OrderDate","ProductKey","Amount"})
+in
+    Selected</code></pre>
+<ul class="formula-explain"><li><code>Sql.Database("SERVER", "SalesDB")</code> establishes the SQL Server connection and returns navigation objects for the database.</li><li><code>Sales = Source{[Schema="dbo", Item="Sales"]}[Data]</code> navigates from the database object to the <code>dbo.Sales</code> table.</li><li><code>Table.SelectRows</code> applies the date predicate. Because this is a common relational operation, a SQL connector can often translate it into a source-side <code>WHERE</code> clause.</li><li><code>Table.SelectColumns</code> keeps only the fields required by the model. When folded, the source can return a narrower result instead of transferring unused columns.</li><li><code>in Selected</code> tells the M query which named step is the final output. If a later non-foldable step were inserted before these selective operations, more data might have to be processed locally.</li></ul>
+</div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Do not assume Power Query automatically optimizes every step sequence or that Import mode makes folding irrelevant.</div>
+<div class="inline-quiz" data-limit="5" data-topic="query_folding"></div>
+</section><section class="concept" id="refresh_parameters">
+<span class="pill">Concept 6</span>
+<h2>Parameters, incremental refresh &amp; load settings</h2><div class="concept-explanation"><p class="concept-lead">Parameters and load settings make Power Query solutions reusable and controllable. They are especially important when the same logic must work across environments or when a large table should refresh only its recent partitions instead of reloading its entire history.</p>
+<p>A <strong>Power Query parameter</strong> is a named value that can be referenced by query steps—for example, a server name, folder path, minimum date or environment name. Changing the parameter changes the behavior of the query without rewriting each step that uses the value. Power Query parameters are different from What-if parameters, which are model features used for interactive report scenarios.</p>
+<h3>Incremental refresh</h3>
+<p>Incremental refresh partitions a large table by date so that Power BI can retain historical data while refreshing only a recent period. The standard configuration uses two Date/Time parameters named <code>RangeStart</code> and <code>RangeEnd</code>. The query filters the source date column so each partition has a non-overlapping boundary.</p>
+<ul><li>A common filter pattern is <code>Date &gt;= RangeStart</code> and <code>Date &lt; RangeEnd</code>. Using a strict upper boundary prevents the same row from belonging to adjacent partitions.</li><li>The <strong>store</strong> period defines how much historical data is retained. The <strong>refresh</strong> period defines how much of the recent history is reprocessed on each refresh.</li><li><strong>Detect data changes</strong> can use a modification timestamp such as <code>LastModifiedDate</code> to determine whether an older partition needs to be refreshed.</li><li>For supported sources, the range filter should fold so that the source returns only the rows required for the partition.</li></ul>
+<h3>Load settings and query reuse</h3>
+<p><strong>Enable load</strong> controls whether a query becomes a table in the semantic model. A staging query can have Enable load turned off while downstream reference queries still use its result. <strong>Include in report refresh</strong> is a separate setting that determines whether the query participates in refresh.</p>
+<p>A <strong>Reference</strong> query starts from another query's result, so future upstream transformations flow into the reference. A <strong>Duplicate</strong> copies the current steps and then becomes independent. Use Reference when you want a reusable staging pipeline; use Duplicate when you intentionally need a separate copy of the logic.</p></div>
+<div class="code-wrap">
+<div class="code-label">Power Query M</div>
+<pre class="code-block"><code>Table.SelectRows(
+    Source,
+    each [TransactionDate] &gt;= RangeStart
+        and [TransactionDate] &lt; RangeEnd
+)</code></pre>
+<ul class="formula-explain"><li><code>Table.SelectRows</code> filters the source table and returns only rows that satisfy the condition.</li><li><code>RangeStart</code> and <code>RangeEnd</code> are Date/Time Power Query parameters that Power BI substitutes with partition boundaries when incremental refresh is applied in the Service.</li><li><code>[TransactionDate] &gt;= RangeStart</code> makes the lower boundary inclusive, so the first instant in the partition is included.</li><li><code>[TransactionDate] &lt; RangeEnd</code> makes the upper boundary exclusive. This prevents the same boundary value from being included in two adjacent partitions.</li><li>For supported sources, this filter should remain foldable so the source system returns only the rows required for each refresh partition.</li></ul>
+</div>
+<div class="gotcha"><strong>Exam gotcha:</strong> The business transaction date normally defines partitions, while a modification date can tell Power BI whether data changed.</div>
+<div class="inline-quiz" data-limit="5" data-topic="refresh_parameters"></div>
+</section>
+<nav aria-label="Module navigation" class="module-nav"><span></span><a class="btn" href="data-modeling.html">Module 2 — Data Modeling →</a></nav>
+</div>
+<aside aria-label="On this page" class="toc">
+<strong>On this page</strong>
+<a href="#storage_connections">Storage modes &amp; connections</a><a href="#profiling_types">Data profiling, quality, errors &amp; types</a><a href="#transformations_m">Core transformations &amp; Power Query M</a><a href="#merge_append">Merge, append, joins &amp; folder combinations</a><a href="#query_folding">Query folding &amp; efficient shaping</a><a href="#refresh_parameters">Parameters, incremental refresh &amp; load settings</a>
+<hr style="border:0;border-top:1px solid var(--border);margin:12px 0"/>
+<a href="formula-reference.html">Formula reference</a>
+<a href="cheat-sheet.html">Pre-exam cheat sheet</a>
+</aside>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="wrap footer-grid">
+<div>
+<strong>PL-300 Exam Prep by Melarks</strong>
+<p>Independent study support for experienced Power BI analysts preparing for Microsoft PL-300.</p>
+<p class="small">This site is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft, Power BI, and PL-300 are trademarks of their respective owner.</p>
+</div>
+<div>
+<strong>Study</strong>
+<p><a href="prepare-data.html">Prepare Data</a><br/>
+<a href="data-modeling.html">Data Modeling</a><br/>
+<a href="dax-filter-context.html">DAX &amp; Filter Context</a><br/>
+<a href="visualize-analyze.html">Visualize &amp; Analyze</a><br/>
+<a href="service-security.html">Service &amp; Security</a></p>
+</div>
+<div>
+<strong>Resources</strong>
+<p><a href="practice.html">Practice Questions</a><br/>
+<a href="mock-exam.html">Mock Exam</a><br/>
+<a href="formula-reference.html">Formula Reference</a><br/>
+<a href="cheat-sheet.html">Cheat Sheet</a><br/>
+<a href="exam-strategy.html">Exam Strategy</a><br/>
+<a href="about.html">About</a></p>
+</div>
+</div>
+<div class="wrap small" style="margin-top:20px">
+    © <span data-year="">2026</span> Melarks. Educational use only. 
+    <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-300" rel="noopener">Official Microsoft PL-300 study guide</a>.
+  </div>
+</footer>
+<script defer="" src="js/app.js"></script>
+<script defer="" src="js/questions.js"></script>
+<script defer="" src="js/practice.js"></script>
+</body>
+</html>

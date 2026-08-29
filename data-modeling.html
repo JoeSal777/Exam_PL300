@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Data Modeling | PL-300 Exam Prep by Melarks</title>
+<meta content="PL-300 data modeling guide covering star schema, grain, relationships, date tables, calculated objects, model properties and performance optimization." name="description"/>
+<meta content="index,follow,max-image-preview:large" name="robots"/>
+<link href="https://melarks.com/data-modeling.html" rel="canonical"/>
+<meta content="#03045e" name="theme-color"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="website" property="og:type"/>
+<meta content="Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks" property="og:site_name"/>
+<meta content="Data Modeling | PL-300 Exam Prep by Melarks" property="og:title"/>
+<meta content="PL-300 data modeling guide covering star schema, grain, relationships, date tables, calculated objects, model properties and performance optimization." property="og:description"/>
+<meta content="https://melarks.com/data-modeling.html" property="og:url"/>
+<meta content="https://melarks.com/assets/og-cover.png" property="og:image"/>
+<meta content="PL-300 Exam Prep by Melarks" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Data Modeling | PL-300 Exam Prep by Melarks" name="twitter:title"/>
+<meta content="PL-300 data modeling guide covering star schema, grain, relationships, date tables, calculated objects, model properties and performance optimization." name="twitter:description"/>
+<meta content="https://melarks.com/assets/og-cover.png" name="twitter:image"/>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="site.webmanifest" rel="manifest"/>
+<link href="css/styles.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Data Modeling | PL-300 Exam Prep by Melarks", "description": "PL-300 data modeling guide covering star schema, grain, relationships, date tables, calculated objects, model properties and performance optimization.", "url": "https://melarks.com/data-modeling.html", "isPartOf": {"@type": "WebSite", "name": "Microsoft Power BI Data Analyst PL-300 Exam Prep by Melarks", "url": "https://melarks.com"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 2 — Data Modeling", "description": "Learn how grain, star schemas, relationships, date roles, calculated objects and model optimization shape a reliable Power BI semantic model.", "educationalLevel": "Intermediate", "learningResourceType": "Study guide", "about": "Microsoft Power BI Data Analyst PL-300 certification"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://melarks.com/"}, {"@type": "ListItem", "position": 2, "name": "Module 2 — Data Modeling", "item": "https://melarks.com/data-modeling.html"}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="wrap topbar">
+<a aria-label="Melarks PL-300 Exam Prep home" class="brand" href="index.html">
+<span aria-hidden="true" class="brand-mark">PL<br/>300</span>
+<span>PL-300 Prep by Melarks</span>
+</a>
+<nav aria-label="Primary navigation" class="nav"><a href="index.html">Home</a>
+<a href="prepare-data.html">Study Guide</a>
+<a href="formula-reference.html">Formula Reference</a>
+<a href="practice.html">Practice</a>
+<a href="mock-exam.html">Mock Exam</a>
+<a href="cheat-sheet.html">Cheat Sheet</a>
+<a href="about.html">About</a></nav>
+<div style="display:flex;gap:7px">
+<button aria-label="Toggle dark and light theme" class="icon-btn" data-theme-toggle="" type="button">◐</button>
+<button aria-label="Open navigation menu" class="menu-btn" data-menu="" type="button">Menu</button>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="wrap">
+<div class="breadcrumbs"><a href="index.html">Home</a> / Study Guide / Module 2 — Data Modeling</div>
+<span class="eyebrow">25–30% of exam</span>
+<h1>Module 2 — Data Modeling</h1>
+<p>A Power BI semantic model determines how business entities relate, how filters propagate, how calculations behave, and how efficiently the engine can answer report queries. This module builds the reasoning needed to design a clean star schema, choose the right grain, manage date roles, select the correct calculated object, and optimize model performance.</p>
+<div class="actions">
+<a class="btn" href="#module-content">Start module</a>
+<a class="btn secondary" href="practice.html">Open full practice bank</a>
+</div>
+</div>
+</section>
+<section class="section" id="module-content">
+<div class="wrap layout">
+<div>
+<div class="notice" style="margin-bottom:20px">
+<strong>Your progress is saved on this browser.</strong>
+<div class="small" data-global-progress="">0/160 questions completed</div>
+</div>
+<section class="concept" id="star_grain">
+<span class="pill">Concept 1</span>
+<h2>Star schema, fact/dimension design &amp; grain</h2><div class="concept-explanation"><p class="concept-lead">A strong Power BI model begins with two decisions: <strong>what each table represents</strong> and <strong>what one row in each fact table means</strong>. These decisions define the grain of the model and determine whether later measures can answer the required questions correctly.</p>
+<p>A <strong>fact table</strong> normally contains measurable business events or snapshots—for example, one row per sales transaction, one row per support ticket, or one row per daily inventory snapshot. A <strong>dimension table</strong> contains descriptive attributes used to filter and group those facts, such as Product, Customer, Date, Store or Employee.</p>
+<p>Power BI models work best when these tables are organized into a <strong>star schema</strong>. Dimension tables sit around a central fact table and connect to it through keys. The dimension side normally contains one unique row per entity, while the fact table can contain many rows for the same dimension key.</p>
+<div class="definition-box"><strong>Grain:</strong> the precise meaning of one row in a table. “One row per transaction line” is a grain. “Sales data” is not precise enough.</div>
+<h3>Why grain matters</h3>
+<ul><li>If the fact table is already aggregated to one row per month and product, you cannot later count individual transactions because that detail no longer exists.</li><li>If you need distinct customers, transaction counts or analysis by transaction attributes, the fact table must retain the required level of detail.</li><li>Different business processes often deserve separate fact tables rather than being forced into one table with inconsistent grain.</li><li>Keys used to relate facts to dimensions should identify the intended dimension row consistently. Surrogate keys are common in warehouse designs because they separate model relationships from changing business identifiers.</li></ul>
+<h3>Many-to-many business relationships</h3>
+<p>Some entities genuinely relate many-to-many—for example, one consultant can work on many projects and one project can have many consultants. A <strong>bridge table</strong> can store the valid consultant-project combinations and connect both dimensions through controlled one-to-many relationships. This is usually clearer than relying on an ambiguous direct many-to-many relationship.</p>
+<div class="example-box"><strong>Example:</strong> A retail sales fact table at “one row per product on each receipt” can support quantity, revenue, product, store, customer and transaction analysis. If you first aggregate it to “one row per store per month,” you lose receipt-level questions such as average basket size and transaction count.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> A DAX measure aggregates at query time. Power Query Group By changes the physically stored grain.</div>
+<div class="inline-quiz" data-limit="5" data-topic="star_grain"></div>
+</section><section class="concept" id="relationships">
+<span class="pill">Concept 2</span>
+<h2>Cardinality, cross-filter direction &amp; filter propagation</h2><div class="concept-explanation"><p class="concept-lead">Relationships allow filters to move between tables. To reason about a Power BI model, always ask three questions: <strong>what is the cardinality, which direction can the filter travel, and is the relationship active?</strong></p>
+<p>In a normal star schema, a dimension has a unique key and is on the <strong>one</strong> side of a one-to-many relationship. The fact table contains repeated foreign keys and is on the <strong>many</strong> side. This relationship lets a filter such as <em>Product Category = Bikes</em> restrict the fact rows that contribute to a measure.</p>
+<h3>Cross-filter direction</h3>
+<p>With <strong>single-direction filtering</strong>, filters normally travel from the dimension to the fact table. This direction is predictable, efficient and is the default best practice for most star schemas.</p>
+<p><strong>Bidirectional</strong> filtering allows filters to travel in both directions. It can solve specific modeling requirements, but it also makes the model harder to reason about and can create multiple possible filter paths. When two paths can carry the same filter between tables, Power BI can encounter ambiguity.</p>
+<div class="example-box"><strong>Filter propagation example:</strong> Customer → Sales ← Product. If both relationships are single direction from the dimensions to Sales, choosing a customer country filters Sales, but that filter does not travel backward from Sales into Product. Therefore, a Product slicer does not automatically shrink to only products purchased by that country.</div>
+<h3>Cardinality terminology</h3>
+<ul><li><strong>One-to-many (1:*)</strong> is the standard dimension-to-fact pattern.</li><li><strong>One-to-one (1:1)</strong> requires unique values on both sides and is less common in analytical models.</li><li><strong>Many-to-many (*:*)</strong> allows duplicates on both sides but should be used deliberately because filter behavior can be harder to understand.</li><li><strong>Column cardinality</strong> means the number of distinct values stored in a column. It is a storage/model-optimization concept and is different from relationship cardinality.</li></ul>
+<p>Before creating a one-to-many relationship, make sure the key on the one side is truly unique. If it is not, correct the dimension design or choose a modeling pattern that represents the real relationship.</p></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Do not turn on bidirectional filtering merely to make slicers reduce one another unless the business requirement justifies it.</div>
+<div class="inline-quiz" data-limit="5" data-topic="relationships"></div>
+</section><section class="concept" id="date_roles">
+<span class="pill">Concept 3</span>
+<h2>Date tables, active/inactive relationships &amp; role-playing dimensions</h2><div class="concept-explanation"><p class="concept-lead">Time intelligence and date filtering are much more reliable when a model contains a dedicated <strong>Date dimension</strong> rather than relying only on date columns scattered through fact tables.</p>
+<p>A good Date table contains one row for every date in the required range and usually adds attributes such as Year, Quarter, Month Name, Month Number and Year-Month. The date column used as the primary date key should be unique and nonblank. For classic time-intelligence scenarios, the range should be continuous so functions can reason about adjacent periods correctly.</p>
+<h3>Sorting date labels</h3>
+<p>Text labels sort alphabetically unless you give Power BI a numeric or sequential sort column. For example, <strong>Month Name</strong> should be sorted by Month Number so January appears before February. A <strong>Month-Year</strong> label such as “Jan 2026” should use a YearMonth key such as <code>202601</code>; sorting only by Month Number would mix months from different years.</p>
+<h3>Multiple date roles</h3>
+<p>A fact table often contains more than one date, such as Order Date, Ship Date and Invoice Date. Power BI can store several relationships between the same Date table and fact table, but only one can be active at a time. The active relationship is used automatically for normal filtering.</p>
+<p><code>USERELATIONSHIP()</code> tells <code>CALCULATE()</code> to use an existing inactive relationship for a particular calculation. This is useful when one Date slicer should usually filter Order Date but a specific measure must calculate by Ship Date.</p>
+<div class="definition-box"><strong>Role-playing dimension:</strong> multiple logical uses of the same type of dimension. If users need independent Order Date and Ship Date slicers at the same time, separate Date tables—such as Order Date and Ship Date—make the two roles explicit and independently filterable.</div>
+<div class="example-box"><strong>Example:</strong> With one shared Date table, a user cannot independently select “Orders in January” and “Shipments in February” using two slicers from that same table. Separate role-playing date dimensions solve that requirement cleanly.</div></div>
+<div class="code-wrap">
+<div class="code-label">DAX</div>
+<pre class="code-block"><code>Shipped Sales =
+CALCULATE (
+    [Total Sales],
+    USERELATIONSHIP ( 'Date'[Date], Sales[ShipDate] )
+)</code></pre>
+<ul class="formula-explain"><li><code>[Total Sales]</code> is the existing base measure. Reusing a base measure keeps the business aggregation logic in one place.</li><li><code>CALCULATE</code> reevaluates that measure under a modified filter/relationship context rather than changing the stored model relationship permanently.</li><li><code>USERELATIONSHIP ( 'Date'[Date], Sales[ShipDate] )</code> identifies an existing inactive relationship and activates it for this calculation.</li><li>During this evaluation, the ShipDate path is used to propagate the Date filter. Other unrelated filters, such as Product or Region, continue to apply.</li><li>When the calculation finishes, the model still has the same active/inactive relationship configuration; <code>USERELATIONSHIP</code> is local to the expression.</li></ul>
+</div>
+<div class="gotcha"><strong>Exam gotcha:</strong> USERELATIONSHIP solves a calculation-by-alternate-date problem; it does not make one Date table behave like two independent slicers.</div>
+<div class="inline-quiz" data-limit="5" data-topic="date_roles"></div>
+</section><section class="concept" id="calc_objects">
+<span class="pill">Concept 4</span>
+<h2>Measures, calculated columns, calculated tables &amp; quick measures</h2><div class="concept-explanation"><p class="concept-lead">Power BI offers several ways to create derived logic, and the correct choice depends on <strong>whether the result is stored or calculated at query time, whether it is row-level or aggregate, and whether users need to group or filter by it</strong>.</p>
+<table class="concept-table"><tr><th>Object</th><th>How it behaves</th><th>Typical use</th></tr><tr><td>Measure</td><td>Calculated at query time in the current filter context; returns a scalar result.</td><td>Sales, margin %, customer count, YTD revenue.</td></tr><tr><td>Calculated column</td><td>Calculated row by row during model processing and stored in the model.</td><td>Band, classification, label or attribute needed on rows/axes/slicers.</td></tr><tr><td>Calculated table</td><td>A table created by DAX during model processing.</td><td>Special model tables that must be derived from existing model data.</td></tr></table>
+<p><strong>Measures</strong> are usually the preferred choice for analytical calculations because the same measure can return different results for different report filters. A measure such as <code>[Total Sales]</code> can show one value for the whole report, another by product, and another by month without storing separate results.</p>
+<p><strong>Calculated columns</strong> are useful when every row needs a stable category that users must place in a slicer, row header or axis. Because the values are stored, high-cardinality calculated columns can increase model size. If a static transformation can be performed in the source or Power Query, doing it before load is often more efficient and keeps preparation logic together.</p>
+<p><strong>Calculated tables</strong> can be useful for model structures created from existing model data, but source-system or Power Query transformations are generally preferable when they can produce the same stable table earlier in the pipeline.</p>
+<h3>Quick measures</h3>
+<p>Quick measures use a guided interface to generate DAX for common calculations. They can save time, but for PL-300 you should still understand the generated DAX. The exam can test the underlying calculation behavior even if the feature created the formula for you.</p>
+<div class="example-box"><strong>Example:</strong> “Profit Margin %” should normally be a measure because it must recalculate for whichever filters are active. “Customer Age Band” may be a calculated column if users must put the band directly on a chart axis or slicer.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> A measure is not a stored categorical column and therefore is not normally a slicer field.</div>
+<div class="inline-quiz" data-limit="5" data-topic="calc_objects"></div>
+</section><section class="concept" id="performance_properties">
+<span class="pill">Concept 5</span>
+<h2>Model properties &amp; performance optimization</h2><div class="concept-explanation"><p class="concept-lead">Power BI performance depends not only on DAX but also on how much data the model stores and how efficiently VertiPaq can encode it. Good model optimization starts by removing data the report does not need and by avoiding unnecessary detail.</p>
+<p>VertiPaq is a columnar storage engine. It compresses repeated values very efficiently, so columns with relatively few distinct values usually compress well. <strong>High-cardinality</strong> columns—especially long text, unique transaction identifiers and precise timestamps—can consume much more memory because they contain many distinct values.</p>
+<h3>Practical model optimization</h3>
+<ul><li>Remove unused columns before load. A hidden column still occupies model memory; hiding only changes the authoring experience.</li><li>Remove rows that are outside the analytical requirement when it is safe to do so.</li><li>Reduce unnecessary granularity. If the report only analyzes dates, storing second-level timestamps may add cardinality without analytical value.</li><li>Use appropriate data types and precision. Smaller, simpler representations can improve compression.</li><li>Set meaningful names, formatting and data categories so report authors use fields correctly.</li><li>For numeric identifiers such as Product ID, use <strong>Don't summarize</strong> when summing the number has no business meaning.</li></ul>
+<h3>Diagnosing performance</h3>
+<p><strong>Performance Analyzer</strong> in Power BI Desktop records how long visuals take to execute, including DAX query time and rendering-related activity. Use it when you need to identify which report visuals are slow before deciding how to optimize them.</p>
+<p><strong>DAX query view</strong> allows you to write and run DAX queries against the model. It is useful for inspecting model results and investigating calculations. A slow report can come from inefficient measures, poor relationship design, too many visuals, source latency in DirectQuery, or an oversized model—not just from one DAX formula.</p>
+<div class="example-box"><strong>Example:</strong> Removing an unused free-text comment column that is almost unique across 100 million fact rows can save far more model memory than hiding the column or changing its display name.</div></div>
+<div class="gotcha"><strong>Exam gotcha:</strong> Hiding a column improves the field list but does not reduce VertiPaq storage and is not security.</div>
+<div class="inline-quiz" data-limit="5" data-topic="performance_properties"></div>
+</section>
+<nav aria-label="Module navigation" class="module-nav"><a class="btn secondary" href="prepare-data.html">← Module 1 — Prepare the Data</a><a class="btn" href="dax-filter-context.html">Module 3 — DAX &amp; Filter Context →</a></nav>
+</div>
+<aside aria-label="On this page" class="toc">
+<strong>On this page</strong>
+<a href="#star_grain">Star schema, fact/dimension design &amp; grain</a><a href="#relationships">Cardinality, cross-filter direction &amp; filter propagation</a><a href="#date_roles">Date tables, active/inactive relationships &amp; role-playing dimensions</a><a href="#calc_objects">Measures, calculated columns, calculated tables &amp; quick measures</a><a href="#performance_properties">Model properties &amp; performance optimization</a>
+<hr style="border:0;border-top:1px solid var(--border);margin:12px 0"/>
+<a href="formula-reference.html">Formula reference</a>
+<a href="cheat-sheet.html">Pre-exam cheat sheet</a>
+</aside>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="wrap footer-grid">
+<div>
+<strong>PL-300 Exam Prep by Melarks</strong>
+<p>Independent study support for experienced Power BI analysts preparing for Microsoft PL-300.</p>
+<p class="small">This site is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft, Power BI, and PL-300 are trademarks of their respective owner.</p>
+</div>
+<div>
+<strong>Study</strong>
+<p><a href="prepare-data.html">Prepare Data</a><br/>
+<a href="data-modeling.html">Data Modeling</a><br/>
+<a href="dax-filter-context.html">DAX &amp; Filter Context</a><br/>
+<a href="visualize-analyze.html">Visualize &amp; Analyze</a><br/>
+<a href="service-security.html">Service &amp; Security</a></p>
+</div>
+<div>
+<strong>Resources</strong>
+<p><a href="practice.html">Practice Questions</a><br/>
+<a href="mock-exam.html">Mock Exam</a><br/>
+<a href="formula-reference.html">Formula Reference</a><br/>
+<a href="cheat-sheet.html">Cheat Sheet</a><br/>
+<a href="exam-strategy.html">Exam Strategy</a><br/>
+<a href="about.html">About</a></p>
+</div>
+</div>
+<div class="wrap small" style="margin-top:20px">
+    © <span data-year="">2026</span> Melarks. Educational use only. 
+    <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-300" rel="noopener">Official Microsoft PL-300 study guide</a>.
+  </div>
+</footer>
+<script defer="" src="js/app.js"></script>
+<script defer="" src="js/questions.js"></script>
+<script defer="" src="js/practice.js"></script>
+</body>
+</html>
